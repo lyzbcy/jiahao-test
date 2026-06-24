@@ -1,0 +1,62 @@
+[
+  {
+    "id": "quandui",
+    "name": "上课全对豪",
+    "out": "img/labels/quandui.png",
+    "prompt": "Generate a single-character 3D clay/soft-vinyl collectible figure image. Use image 1 as the ONLY character (a yellow round-headed chibi creature wearing a black hoodie and black face mask with 'AW' logo, green eyes, arms crossed pose). THIS scene variant: the character is holding up a test paper with a big red '100' circle and a proud checkmark, one arm raised celebrating a perfect score. Keep the SAME art style as image 1: soft matte clay material, low-saturation colors, clean Q-version chibi proportions (big head small body). BACKGROUND: perfectly flat solid #ff00ff magenta (RGB 255,0,255) filling entire image, no shadows or gradients. Portrait orientation. Single character only."
+  },
+  {
+    "id": "zuoti",
+    "name": "做题嘉豪",
+    "out": "img/labels/zuoti.png",
+    "prompt": "Generate a single-character 3D clay/soft-vinyl collectible figure image. Use image 1 as the ONLY character (a yellow round-headed chibi creature wearing a black hoodie and black face mask with 'AW' logo, green eyes). THIS scene variant: the character is intensely focused studying, holding a pencil, surrounded by floating exercise books and papers, glasses pushed up with a smug 'I finished early' expression. Keep the SAME art style as image 1: soft matte clay material, low-saturation colors, clean Q-version chibi proportions. BACKGROUND: perfectly flat solid #ff00ff magenta (RGB 255,0,255) filling entire image, no shadows or gradients. Portrait orientation. Single character only."
+  },
+  {
+    "id": "wenxue",
+    "name": "文学嘉豪",
+    "out": "img/labels/wenxue.png",
+    "prompt": "Generate a single-character 3D clay/soft-vinyl collectible figure image. Use image 1 as the ONLY character (a yellow round-headed chibi creature wearing a black hoodie and black face mask with 'AW' logo, green eyes). THIS scene variant: the character is holding an open book of poetry, looking up pensively with a hand on chin, floating golden literary quotes/characters around, a pretentious 'deep thinker' pose. Keep the SAME art style as image 1: soft matte clay material, low-saturation colors, clean Q-version chibi proportions. BACKGROUND: perfectly flat solid #ff00ff magenta (RGB 255,0,255) filling entire image, no shadows or gradients. Portrait orientation. Single character only."
+  },
+  {
+    "id": "jinrong",
+    "name": "金融嘉豪",
+    "out": "img/labels/jinrong.png",
+    "prompt": "Generate a single-character 3D clay/soft-vinyl collectible figure image. Use image 1 as the ONLY character (a yellow round-headed chibi creature wearing a black hoodie and black face mask with 'AW' logo, green eyes). THIS scene variant: the character is adjusting an imaginary tie, holding a smartphone showing a rising green stock chart, a smug elite-bro expression with floating coins and dollar signs around. Keep the SAME art style as image 1: soft matte clay material, low-saturation colors, clean Q-version chibi proportions. BACKGROUND: perfectly flat solid #ff00ff magenta (RGB 255,0,255) filling entire image, no shadows or gradients. Portrait orientation. Single character only."
+  },
+  {
+    "id": "heike",
+    "name": "黑客嘉豪",
+    "out": "img/labels/heike.png",
+    "prompt": "Generate a single-character 3D clay/soft-vinyl collectible figure image. Use image 1 as the ONLY character (a yellow round-headed chibi creature wearing a black hoodie and black face mask with 'AW' logo, green eyes). THIS scene variant: the character is typing furiously on a laptop, green matrix code reflected on the mask, a cool hacker pose with glowing green digital elements floating around. Keep the SAME art style as image 1: soft matte clay material, low-saturation colors, clean Q-version chibi proportions. BACKGROUND: perfectly flat solid #ff00ff magenta (RGB 255,0,255) filling entire image, no shadows or gradients. Portrait orientation. Single character only."
+  },
+  {
+    "id": "bingwang",
+    "name": "兵王嘉豪",
+    "out": "img/labels/bingwang.png",
+    "prompt": "Generate a single-character 3D clay/soft-vinyl collectible figure image. Use image 1 as the ONLY character (a yellow round-headed chibi creature wearing a black hoodie and black face mask with 'AW' logo, green eyes). THIS scene variant: the character in a tactical military stance, one fist clenched, camo pattern accents on the hoodie, an intense 'special forces veteran' pose walking with swagger. Keep the SAME art style as image 1: soft matte clay material, low-saturation colors, clean Q-version chibi proportions. BACKGROUND: perfectly flat solid #ff00ff magenta (RGB 255,0,255) filling entire image, no shadows or gradients. Portrait orientation. Single character only."
+  },
+  {
+    "id": "qiuchang",
+    "name": "球场嘉豪",
+    "out": "img/labels/qiuchang.png",
+    "prompt": "Generate a single-character 3D clay/soft-vinyl collectible figure image. Use image 1 as the ONLY character (a yellow round-headed chibi creature wearing a black hoodie and black face mask with 'AW' logo, green eyes). THIS scene variant: the character mid-air doing an imaginary basketball dunk/air-punch, dynamic jumping pose, sports sweatband, a triumphant 'game winner' expression. Keep the SAME art style as image 1: soft matte clay material, low-saturation colors, clean Q-version chibi proportions. BACKGROUND: perfectly flat solid #ff00ff magenta (RGB 255,0,255) filling entire image, no shadows or gradients. Portrait orientation. Single character only."
+  },
+  {
+    "id": "shizu",
+    "name": "始祖嘉豪",
+    "out": "img/labels/shizu.png",
+    "prompt": "Generate a single-character 3D clay/soft-vinyl collectible figure image. Use image 1 as the ONLY character (a yellow round-headed chibi creature wearing a black hoodie and black face mask with 'AW' logo, green eyes). THIS scene variant: the ORIGINAL primordial Jiahao, standing in a legendary god-like pose with arms crossed, golden aura/light rays radiating from behind, an ancient 'the first one' majestic presence, slight gold trim added to the hoodie. Keep the SAME art style as image 1: soft matte clay material, low-saturation colors, clean Q-version chibi proportions. BACKGROUND: perfectly flat solid #ff00ff magenta (RGB 255,0,255) filling entire image, no shadows or gradients. Portrait orientation. Single character only."
+  },
+  {
+    "id": "zizai",
+    "name": "自在极意豪",
+    "out": "img/labels/zizai.png",
+    "prompt": "Generate a single-character 3D clay/soft-vinyl collectible figure image. Use image 1 as the ONLY character (a yellow round-headed chibi creature wearing a black hoodie and black face mask with 'AW' logo, green eyes). THIS scene variant: 'Ultra Instinct' mode - the character in a relaxed casual pose but with silver/white glowing hair aura, eyes closed in serene auto-pilot state, subtle silver energy particles, a 'master who doesn't even know he's a master' vibe. Keep the SAME art style as image 1: soft matte clay material, low-saturation colors, clean Q-version chibi proportions. BACKGROUND: perfectly flat solid #ff00ff magenta (RGB 255,0,255) filling entire image, no shadows or gradients. Portrait orientation. Single character only."
+  },
+  {
+    "id": "xianhao",
+    "name": "仙豪模式",
+    "out": "img/labels/xianhao.png",
+    "prompt": "Generate a single-character 3D clay/soft-vinyl collectible figure image. Use image 1 as the ONLY character (a yellow round-headed chibi creature wearing a black hoodie and black face mask with 'AW' logo, green eyes). THIS scene variant: the ULTIMATE 'Immortal Jiahao Mode' - character floating slightly above ground, full rainbow aura radiating, golden and silver energy swirling, eyes glowing with power, a transcendent legendary final-form presence with celestial sparkles. Keep the SAME art style as image 1: soft matte clay material, clean Q-version chibi proportions. BACKGROUND: perfectly flat solid #ff00ff magenta (RGB 255,0,255) filling entire image, no shadows or gradients. Portrait orientation. Single character only."
+  }
+]

@@ -8,8 +8,18 @@
     "subtitle": "对答案时大喊一声'全对'的本分嘉豪",
     "desc": "你的豪意值还停留在入门级。偶尔打打空气拳，对答案时喊一声'全对'，就已经是你全部的嘉豪了。朴实，可爱，且危险——因为你随时可能进化。",
     "trash": "你是嘉豪界的扫地僧，看着人畜无害，实则潜力股。",
-    "img": "emoji",
-    "cond": { "type": "tier_and_dim", "tier": ["n"], "hint": { "QE": "Q", "LS": "L", "ZJ": "J" } }
+    "img": "quandui.png",
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "n"
+      ],
+      "hint": {
+        "QE": "Q",
+        "LS": "L",
+        "ZJ": "J"
+      }
+    }
   },
   {
     "id": "kongqi",
@@ -21,7 +31,16 @@
     "desc": "球？不需要球。你的世界里随时有一场 NBA 总决赛。起跳、后仰、压哨——全在脑内完成，只在落地那一刻，默默给自己点个赞。",
     "trash": "场均 0 分 0 板 0 助，但脑内场均三双。",
     "img": "toulan.png",
-    "cond": { "type": "tier_and_dim", "tier": ["r"], "hint": { "ZZ": "P", "ZJ": "J" } }
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "r"
+      ],
+      "hint": {
+        "ZZ": "P",
+        "ZJ": "J"
+      }
+    }
   },
   {
     "id": "zuoti",
@@ -32,20 +51,37 @@
     "subtitle": "沉浸刷题的卷王嘉豪，用努力装杯",
     "desc": "别人装帅，你装努力。刷题到深夜，眼镜推一下，露出一个'我早就写完了'的微笑。你的嘉豪不在球场，在错题本里。",
     "trash": "卷又卷不动，躺又躺不平，只能嘉豪一下。",
-    "img": "emoji",
-    "cond": { "type": "tier_and_dim", "tier": ["r"], "hint": { "QE": "Q" } }
+    "img": "zuoti.png",
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "r"
+      ],
+      "hint": {
+        "QE": "Q"
+      }
+    }
   },
   {
     "id": "dadi",
     "name": "虚空打碟豪",
     "tier": "r",
     "emoji": "🎧",
-    "displayProb": 0.10,
+    "displayProb": 0.1,
     "subtitle": "致敬梗起源的 DJ 嘉豪，耳机一戴谁也不爱",
     "desc": "致敬一切的起源。耳机一戴，《The Spectre》一起，你的手指就在桌面上开始了那场盛大的虚空演出。全班都安静了——被你震的。",
     "trash": "头戴式耳机，是虚空打碟豪的本命武器。",
     "img": "dadie.png",
-    "cond": { "type": "tier_and_dim", "tier": ["r"], "hint": { "QE": "E", "LS": "L" } }
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "r"
+      ],
+      "hint": {
+        "QE": "E",
+        "LS": "L"
+      }
+    }
   },
   {
     "id": "yuzhong",
@@ -57,7 +93,15 @@
     "desc": "没有伞？不需要伞。你走在雨里，脑内自动播放悲情 BGM，嘴角带着若有似无的笑。这一刻，整个校园都是你的 MV 现场。",
     "trash": "雨停了，你的 BGM 还没停。",
     "img": "yuzhong.png",
-    "cond": { "type": "tier_and_dim", "tier": ["r"], "hint": { "ZZ": "Z" } }
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "r"
+      ],
+      "hint": {
+        "ZZ": "Z"
+      }
+    }
   },
   {
     "id": "heiyi",
@@ -69,7 +113,16 @@
     "desc": "原教旨主义的嘉豪。黑衣、黑帽、黑口罩——三件套齐活，你往那一站，就是一个移动的谜。没人知道口罩下是什么表情，因为你自己都不知道。",
     "trash": "口罩一戴，谁也不爱；连脸都不知道长啥样，更神秘了。",
     "img": "heiyi.png",
-    "cond": { "type": "tier_and_dim", "tier": ["sr"], "hint": { "ZZ": "Z", "QE": "Q" } }
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "sr"
+      ],
+      "hint": {
+        "ZZ": "Z",
+        "QE": "Q"
+      }
+    }
   },
   {
     "id": "wenxue",
@@ -80,8 +133,17 @@
     "subtitle": "出口成章的装文嘉豪，金句比诗多",
     "desc": "你的嘉豪不在肢体，在笔头。动不动就'此去经年''浮生若梦'，把一条朋友圈写成了《滕王阁序》。文化人的装杯，润物细无声。",
     "trash": "不是在写诗，就是在憋诗；朋友圈人均鲁迅。",
-    "img": "emoji",
-    "cond": { "type": "tier_and_dim", "tier": ["sr"], "hint": { "LS": "S", "QE": "Q" } }
+    "img": "wenxue.png",
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "sr"
+      ],
+      "hint": {
+        "LS": "S",
+        "QE": "Q"
+      }
+    }
   },
   {
     "id": "jinrong",
@@ -92,8 +154,17 @@
     "subtitle": "动不动聊投资理财的精英嘉豪，余额没有术语多",
     "desc": "开口就是'复利''对冲''资产配置'，仿佛下一秒就要去华尔街。然而你的全部资产，是微信零钱里的 18.5。术语撑场面，余额交房租。",
     "trash": "理财博主人设，余额 18 块 5 毛的倔强。",
-    "img": "emoji",
-    "cond": { "type": "tier_and_dim", "tier": ["sr"], "hint": { "ZZ": "Z", "QE": "E" } }
+    "img": "jinrong.png",
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "sr"
+      ],
+      "hint": {
+        "ZZ": "Z",
+        "QE": "E"
+      }
+    }
   },
   {
     "id": "heike",
@@ -104,8 +175,17 @@
     "subtitle": "键盘敲得飞起的科技嘉豪，绿屏代码护体",
     "desc": "黑框眼镜一戴，键盘敲得噼里啪啦，屏幕上一片绿色代码瀑布——其实你只是在敲一篇周记。但氛围到了，你就是黑客帝国本体。",
     "trash": "代码不会写几行，但敲键盘的姿势，是顶级黑客的。",
-    "img": "emoji",
-    "cond": { "type": "tier_and_dim", "tier": ["ssr"], "hint": { "ZZ": "Z", "QE": "E" } }
+    "img": "heike.png",
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "ssr"
+      ],
+      "hint": {
+        "ZZ": "Z",
+        "QE": "E"
+      }
+    }
   },
   {
     "id": "bingwang",
@@ -116,8 +196,17 @@
     "subtitle": "脑补自己是退役特种兵的硬核嘉豪，走路带风",
     "desc": "你走路永远在警戒，眼神扫过每一个角落，仿佛随时要执行秘密任务。其实你只是去小卖部买辣条。但在你心里，那是一次代号'辣条'的机密行动。",
     "trash": "退役特种兵的人设，保安亭的命。",
-    "img": "emoji",
-    "cond": { "type": "tier_and_dim", "tier": ["ssr"], "hint": { "ZZ": "Z", "LS": "S" } }
+    "img": "bingwang.png",
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "ssr"
+      ],
+      "hint": {
+        "ZZ": "Z",
+        "LS": "S"
+      }
+    }
   },
   {
     "id": "qiuchang",
@@ -128,8 +217,17 @@
     "subtitle": "空气拳+花式运球的运动嘉豪，全场最佳（幻想中）",
     "desc": "你不是在打空气拳，就是在运空气球。每个动作都配了现场解说音效，每次得分都要回头确认有没有观众——虽然观众只有你自己。",
     "trash": "场均 0 球，但庆祝动作全套，奖杯庆祝尤为标准。",
-    "img": "emoji",
-    "cond": { "type": "tier_and_dim", "tier": ["sr"], "hint": { "ZZ": "P", "LS": "S" } }
+    "img": "qiuchang.png",
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "sr"
+      ],
+      "hint": {
+        "ZZ": "P",
+        "LS": "S"
+      }
+    }
   },
   {
     "id": "shizu",
@@ -140,8 +238,18 @@
     "subtitle": "一切嘉豪的源头，初代形态，传说中的男人",
     "desc": "传说中那位穿黑衣黑帽黑口罩、在教室模仿 Alan Walker 的初代嘉豪，疑似就是你的前世。你的每一个动作，都在向那位始祖致敬，而你浑然不觉。",
     "trash": "你就是那个视频里的男人——的灵魂转世。",
-    "img": "emoji",
-    "cond": { "type": "tier_and_dim", "tier": ["ssr"], "hint": { "ZZ": "Z", "QE": "E", "LS": "S" } }
+    "img": "shizu.png",
+    "cond": {
+      "type": "tier_and_dim",
+      "tier": [
+        "ssr"
+      ],
+      "hint": {
+        "ZZ": "Z",
+        "QE": "E",
+        "LS": "S"
+      }
+    }
   },
   {
     "id": "zizai",
@@ -152,9 +260,11 @@
     "subtitle": "身在豪中不知豪，无意识嘉豪的最高境界",
     "desc": "豪意值拉满，却浑然不觉。你不知道自己为什么总被围观，不知道为什么每个动作都那么'豪'。致敬《龙珠》自在极意功——真正的强者，从不刻意，却处处是豪。",
     "trash": "你不是在装，你是真的豪。嘉豪的最高形态：无招胜有招。",
-    "img": "emoji",
+    "img": "zizai.png",
     "special": "cosmic",
-    "cond": { "type": "zizaijiyi" }
+    "cond": {
+      "type": "zizaijiyi"
+    }
   },
   {
     "id": "xianhao",
@@ -165,8 +275,11 @@
     "subtitle": "传说之上的传说，四维同极的极端形态",
     "desc": "当你的'装、二、骚、觉'四维全部走到极致，你突破了嘉豪的极限，进入了传说中的'仙豪模式'。这是连自在极意豪都要仰望的存在。这一刻，你不是嘉豪，你是嘉豪之神。",
     "trash": "测试系统无法理解你。你是超脱规则的嘉豪。",
-    "img": "emoji",
+    "img": "xianhao.png",
     "special": "dragon",
-    "cond": { "type": "all_extreme", "pole": "B" }
+    "cond": {
+      "type": "all_extreme",
+      "pole": "B"
+    }
   }
 ]
