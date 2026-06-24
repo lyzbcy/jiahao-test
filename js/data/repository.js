@@ -57,7 +57,7 @@ const Repo = (function () {
     if (window.SupabaseConfig && window.SupabaseConfig.isEnabled()) {
       try {
         const rows = await window.SupabaseConfig.select(
-          '?select=id,nickname,haoyi,tier,code,label_id,province,created_at' +
+          '?select=id,nickname,contact,contact_type,haoyi,tier,code,label_id,province,created_at' +
           '&order=haoyi.desc&limit=' + limit);
         return { source: 'cloud', rows: rows };
       } catch (e) {

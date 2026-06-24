@@ -232,6 +232,30 @@ html, body {
 .rank-code { font-family: monospace; opacity: 0.7; }
 .rank-haoyi { font-size: 28px; font-weight: bold; flex-shrink: 0; }
 
+/* 排行榜 tab 切换 */
+.rank-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 16px; }
+.rank-tab {
+  padding: 10px 22px; border-radius: 999px; border: 2px solid rgba(155,107,255,0.2);
+  background: #fff; color: var(--text-soft); font-family: inherit; font-size: 15px;
+  cursor: pointer; transition: all 0.2s;
+}
+.rank-tab.active {
+  background: linear-gradient(135deg, var(--candy-pink), var(--candy-purple));
+  color: #fff; border-color: transparent;
+}
+
+/* 省份榜平均豪意值后缀 */
+.rank-haoyi-sub { font-size: 11px; color: var(--text-soft); font-weight: normal; margin-left: 2px; }
+
+/* 点击展开的详情 */
+.rank-row { cursor: pointer; }
+.rank-detail {
+  font-size: 13px; color: var(--candy-purple); margin-top: 6px;
+  padding-top: 6px; border-top: 1px dashed rgba(155,107,255,0.2);
+  word-break: break-all;
+}
+
+
 /* 图鉴 */
 .collection-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
