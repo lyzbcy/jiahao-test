@@ -75,9 +75,30 @@ const HomePage = (function () {
               <span class="quiz-opt-text">${o.text}</span>
             </button>`).join('')}
         </div>
+        <div class="quiz-nav">
+          <button class="btn-ghost quiz-prev" id="quizPrev" ${_idx === 0 ? 'disabled' : ''}>← 上一题</button>
+          <span class="quiz-nav-hint">${_idx === 0 ? '开始答题' : '可返回修改（不影响计时）'}</span>
+        </div>
       </div>`;
 
     if (window.Mascot) window.Mascot.setState('peek');
+
+    // 如果这题之前答过，高亮已选选项
+    const prevAns = _answers.find(a => a.qid === q.id);
+    if (prevAns) {
+      const sel = _container.querySelector(`.quiz-opt[data-key="${prevAns.optionKey}"]`);
+      if (sel) sel.classList.add('quiz-opt-selected');
+    }
+
+    // 上一题按钮
+    const prevBtn = document.getElementById('quizPrev');
+    if (prevBtn && _idx > 0) {
+      prevBtn.onclick = () => {
+        _idx--;
+        // 不重置 _qStartTime（首次计时已锁定），但给当前题一个新的展示起点用于显示
+        renderQuestion();
+      };
+    }
 
     _container.querySelectorAll('.quiz-opt').forEach(btn => {
       btn.onclick = () => {

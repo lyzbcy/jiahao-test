@@ -138,6 +138,23 @@ html, body {
   color: #fff; display: flex; align-items: center; justify-content: center;
   font-size: 15px;
 }
+/* 已选选项高亮（返回上一题时显示之前选过哪个）*/
+.quiz-opt-selected {
+  border-color: var(--candy-green, #34d399);
+  background: linear-gradient(135deg, rgba(52,211,153,0.08), rgba(155,107,255,0.05));
+  position: relative;
+}
+.quiz-opt-selected::after {
+  content: '✓ 已选'; position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+  color: var(--candy-green, #34d399); font-size: 13px; font-weight: bold;
+}
+/* 上一题导航栏 */
+.quiz-nav {
+  display: flex; align-items: center; gap: 14px; margin-top: 22px;
+}
+.quiz-nav .quiz-prev { padding: 8px 18px; font-size: 14px; }
+.quiz-nav .quiz-prev:disabled { opacity: 0.35; cursor: not-allowed; }
+.quiz-nav-hint { font-size: 12px; color: var(--text-soft, #999); }
 
 /* ===== 开盒舞台 ===== */
 .box-stage { text-align: center; padding-top: 120px; animation: fadeIn 0.3s; }
@@ -295,6 +312,22 @@ html, body {
 .about-src { text-align: center; font-size: 12px; color: var(--text-soft); }
 .about-author { display: flex; gap: 12px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
 .about-author .btn-ghost { padding: 10px 20px; font-size: 14px; }
+
+/* 作者介绍卡片 */
+.about-author-card {
+  background: linear-gradient(135deg, rgba(155,107,255,0.06), rgba(255,107,157,0.06));
+  border-radius: var(--radius); padding: 20px; margin-top: 10px;
+  border-left: 4px solid var(--candy-purple);
+}
+.about-author-intro p { margin-bottom: 10px; }
+.about-author-intro b { color: var(--candy-purple); }
+.about-author-links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 14px !important; }
+.about-author-links a {
+  color: var(--candy-purple); text-decoration: none; font-size: 14px;
+  padding: 6px 14px; border: 1.5px solid rgba(155,107,255,0.3); border-radius: 20px;
+  transition: all 0.2s;
+}
+.about-author-links a:hover { background: var(--candy-purple); color: #fff; border-color: var(--candy-purple); }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 

@@ -27,11 +27,17 @@ const AboutPage = (function () {
           <div class="about-quote">"质疑嘉豪，理解嘉豪，成为嘉豪。"</div>
           <div class="about-src">梗来源：百度百科"嘉豪"词条 · 游民星空《全世界都成为了嘉豪》</div>
 
-          <h2>支持作者 / 加群</h2>
-          <p>这个测试是作者用爱发电做的。如果它让你笑了，欢迎支持一下，也欢迎进群交流嘉豪心得～</p>
-          <div class="about-author">
-            <button class="btn-ghost" onclick="App.openReward()">☕ 请作者喝咖啡</button>
-            <button class="btn-ghost" onclick="App.openQq()">💬 加入 QQ 群</button>
+          <h2>🐟 关于作者</h2>
+          <div class="about-author-card">
+            <div class="about-author-intro">
+              <p>我是<b>捞鱼</b>，一个弱小但有梦想的开发者（<b>捞鱼工作室</b>）。</p>
+              <p>这个嘉豪值测试是用爱发电做的——把"最正经的科学测试"外壳，套在"最沙雕的嘉豪梗"上，纯属娱乐。如果它让你笑了，我就很开心。</p>
+              <p class="about-author-links">
+                <a href="https://lyzbcy.github.io/about/" target="_blank" rel="noopener">🏠 作者主页 →</a>
+                <a href="javascript:void(0)" onclick="App.openReward()">☕ 请作者喝咖啡</a>
+                <a href="javascript:void(0)" onclick="App.openQq()">💬 加入 QQ 群</a>
+              </p>
+            </div>
           </div>
         </div>
         <div class="page-back">
