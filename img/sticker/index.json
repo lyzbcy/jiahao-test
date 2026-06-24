@@ -1,0 +1,39 @@
+{
+  "_comment": "周三涵表情包情绪索引。file → 情绪标签，供代码按场景取图。只收录各场景常用的，未收录的按需扩展。",
+  "_encode": "文件名含中文，前端引用时必须 encodeURIComponent；本表 key 已是原始中文文件名（含.png）",
+  "byMood": {
+    "happy": ["大笑.png", "大笑流泪.png", "好开心.png", "笑死了.png", "棒棒哒.png"],
+    "smug": ["得意.png", "骄傲.png", "骄傲比耶.png", "自信.png", "耍帅.png", "膨胀.png"],
+    "focus": ["专注.png", "盯.png", "入迷.png", "热血.png", "决定了.png"],
+    "cool": ["冷酷杀手.png", "傲立.png", "杀气腾腾.png", "王从天降.png", "哼.png"],
+    "shy": ["害羞.png", "害羞捂脸.png", "害羞脸红.png", "傲娇.png", "嘟嘴.png"],
+    "shock": ["不会吧.png", "惊讶.png", "惊讶震惊.png", "哇哦.png", "天塌了.png"],
+    "thinking": ["思考.png", "困惑思考.png", "琢磨.png", "疑惑.png", "挠头.png"],
+    "sad": ["不景气.png", "无力.png", "疲惫.png", "委屈.png", "难过流泪.png", "趴倒.png"],
+    "cry": ["大哭.png", "伤心哭泣.png", "委屈哭泣.png", "泪崩.png", "躺哭.png"],
+    "angry": ["愤怒.png", "气鼓.png", "可恶.png", "生气跺脚.png", "皱眉.png"],
+    "cute": ["乖巧.png", "萌萌.png", "卖萌.png", "贴贴.png", "撒娇.png"],
+    "food": ["享受美食.png", "吃.png", "开心干饭.png", "偷吃.png", "吃吃.png"],
+    "wave": ["打招呼嗨.png", "挥手.png", "开心挥手.png", "来啦来啦.png", "挥手招呼.png"],
+    "encourage": ["加油.png", "庆祝加油.png", "点赞认可.png", "比心开心.png", "鼓励飞吻.png"]
+  },
+  "byState": {
+    "idle": "乖巧.png",
+    "peek": "偷看.png",
+    "spin": "飞天.png",
+    "happy": "大笑.png",
+    "cry": "伤心哭泣.png",
+    "angry": "愤怒.png",
+    "box": "献花.png"
+  },
+  "byDim": {
+    "ZZ_focus": "专注.png",
+    "ZZ_smug": "得意.png",
+    "QE_chuuni": "热血.png",
+    "QE_normal": "发呆.png",
+    "LS_huo": "坏笑.png",
+    "LS_normal": "乖巧.png",
+    "ZJ_aware": "不会吧.png",
+    "ZJ_unaware": "偷笑.png"
+  }
+}
