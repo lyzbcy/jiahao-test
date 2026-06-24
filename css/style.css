@@ -268,3 +268,44 @@ html, body {
 .about-src { text-align: center; font-size: 12px; color: var(--text-soft); }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== 信息收集表单 ===== */
+.info-form { animation: fadeIn 0.4s; }
+.info-progress {
+  text-align: center; color: var(--candy-green); font-size: 15px;
+  margin-bottom: 12px; margin-top: 20px;
+}
+.info-title {
+  text-align: center; font-size: 28px; margin-bottom: 6px;
+  background: linear-gradient(135deg, var(--candy-pink), var(--candy-purple));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.info-sub { text-align: center; color: var(--text-soft); font-size: 14px; margin-bottom: 28px; }
+.info-field { margin-bottom: 20px; }
+.info-field label {
+  display: block; font-size: 15px; margin-bottom: 8px; color: var(--text-main);
+}
+.info-tip { font-size: 12px; color: var(--text-soft); font-weight: normal; }
+.info-field input, .info-field select {
+  width: 100%; padding: 12px 14px; font-family: inherit; font-size: 16px;
+  border: 2px solid rgba(155,107,255,0.2); border-radius: 12px;
+  background: #fff; color: var(--text-main); transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.info-field input:focus, .info-field select:focus {
+  outline: none; border-color: var(--candy-purple);
+}
+.info-contact-row { display: flex; gap: 10px; }
+.info-contact-row select { width: 110px; flex-shrink: 0; }
+.info-contact-row input { flex: 1; }
+.info-privacy {
+  background: rgba(255,255,255,0.6); border-radius: 12px; padding: 12px 14px;
+  font-size: 13px; color: var(--text-soft); margin: 20px 0; line-height: 1.6;
+}
+.btn-skip {
+  display: block; margin: 16px auto 0; background: none; border: none;
+  color: var(--text-soft); font-family: inherit; font-size: 14px;
+  cursor: pointer; text-decoration: underline; opacity: 0.7;
+}
+.btn-skip:hover { opacity: 1; }
+

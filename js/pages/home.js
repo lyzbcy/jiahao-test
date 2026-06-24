@@ -3,6 +3,8 @@
 // 做题：一题一屏推进式，进度条，答完进入开盒动画
 const HomePage = (function () {
 
+  const PROVINCES = ['北京','天津','河北','山西','内蒙古','辽宁','吉林','黑龙江','上海','江苏','浙江','安徽','福建','江西','山东','河南','湖北','湖南','广东','广西','海南','重庆','四川','贵州','云南','西藏','陕西','甘肃','青海','宁夏','新疆','香港','澳门','台湾'];
+
   function mount(sel) {
     const el = document.querySelector(sel);
     el.innerHTML = `
@@ -40,13 +42,17 @@ const HomePage = (function () {
 
   // ====== 做题流程 ======
   let _answers = [];
+  let _timings = {};      // 各题耗时 { qid: ms }
+  let _qStartTime = 0;    // 当前题开始时间
   let _idx = 0;
   let _container = null;
 
   function startQuiz(sel) {
     _container = document.querySelector(sel);
     _answers = [];
+    _timings = {};
     _idx = 0;
+    _qStartTime = Date.now();
     renderQuestion();
   }
 
@@ -75,10 +81,13 @@ const HomePage = (function () {
 
     _container.querySelectorAll('.quiz-opt').forEach(btn => {
       btn.onclick = () => {
+        // 记录本题耗时
+        _timings[q.id] = Date.now() - _qStartTime;
         _answers.push({ qid: q.id, optionKey: btn.dataset.key });
         if (window.Mascot) window.Mascot.setState('happy');
         if (_idx < questions.length - 1) {
           _idx++;
+          _qStartTime = Date.now();
           renderQuestion();
         } else {
           finish();
@@ -89,8 +98,79 @@ const HomePage = (function () {
   }
 
   function finish() {
-    // 暂存答案，播放开盒动画，跳结果页
+    // 暂存答案和耗时，弹信息表单（填完再开盒）
     sessionStorage.setItem('jiahao_answers', JSON.stringify(_answers));
+    sessionStorage.setItem('jiahao_timings', JSON.stringify(_timings));
+    renderInfoForm();
+  }
+
+  // 信息收集表单：昵称/联系方式/省份（均可不填），带用途说明
+  function renderInfoForm() {
+    // 默认昵称：随机一个"嘉豪XX号"
+    const defaultNick = '嘉豪' + Math.floor(1000 + Math.random() * 9000) + '号';
+    _container.innerHTML = `
+      <div class="info-form">
+        <div class="info-progress">答题完成 ✓</div>
+        <h2 class="info-title">填写你的嘉豪档案</h2>
+        <p class="info-sub">（以下均可不填，不填则用默认值）</p>
+
+        <div class="info-field">
+          <label>昵称 <span class="info-tip">显示在排行榜上</span></label>
+          <input type="text" id="ifNick" maxlength="20" placeholder="${defaultNick}">
+        </div>
+
+        <div class="info-field">
+          <label>联系方式 <span class="info-tip">抖音号/邮箱/QQ/微信，显示在榜单详情里，方便别人找你</span></label>
+          <div class="info-contact-row">
+            <select id="ifContactType">
+              <option value="douyin">抖音号</option>
+              <option value="qq">QQ号</option>
+              <option value="wechat">微信号</option>
+              <option value="email">邮箱</option>
+            </select>
+            <input type="text" id="ifContact" maxlength="40" placeholder="选填">
+          </div>
+        </div>
+
+        <div class="info-field">
+          <label>省份 <span class="info-tip">参与各省份豪意值榜，不填默认"嘉豪省"</span></label>
+          <select id="ifProvince">
+            <option value="">— 不填（嘉豪省）—</option>
+            ${PROVINCES.map(p => `<option value="${p}">${p}</option>`).join('')}
+          </select>
+        </div>
+
+        <div class="info-privacy">
+          🔒 你的信息将显示在公开排行榜上（供其他玩家查看）。如需删除，可联系作者。
+        </div>
+
+        <button class="btn-primary btn-big" id="ifSubmit">提交并开盒 →</button>
+        <button class="btn-skip" id="ifSkip">跳过，直接看结果</button>
+      </div>`;
+
+    document.getElementById('ifSubmit').onclick = submitInfo;
+    document.getElementById('ifSkip').onclick = () => {
+      // 跳过：用默认值
+      saveUserInfo({ nickname: defaultNick, contact: '', contactType: '', province: '' });
+    };
+    window.scrollTo(0, 0);
+  }
+
+  function submitInfo() {
+    const nickname = (document.getElementById('ifNick').value || '').trim();
+    const contact = (document.getElementById('ifContact').value || '').trim();
+    const contactType = document.getElementById('ifContactType').value;
+    const province = document.getElementById('ifProvince').value;
+    saveUserInfo({
+      nickname: nickname || '',
+      contact: contact,
+      contactType: contact ? contactType : '',
+      province: province,
+    });
+  }
+
+  function saveUserInfo(info) {
+    sessionStorage.setItem('jiahao_userinfo', JSON.stringify(info));
     playBoxAnimation(() => { location.hash = '#/result'; });
   }
 

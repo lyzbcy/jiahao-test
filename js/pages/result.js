@@ -29,12 +29,21 @@ const ResultPage = (function () {
     sessionStorage.setItem('jiahao_result', JSON.stringify(result));
 
     render(el, result);
-    // 上云记录（不阻塞）
+    // 上云记录（带用户信息 + 答题耗时，不阻塞）
+    const info = JSON.parse(sessionStorage.getItem('jiahao_userinfo') || '{}');
+    const timings = JSON.parse(sessionStorage.getItem('jiahao_timings') || '{}');
+    const durationMs = Object.values(timings).reduce((s, v) => s + v, 0);
     window.Repo.saveRecord({
+      nickname: info.nickname || '',
+      contact: info.contact || '',
+      contactType: info.contactType || '',
+      province: info.province || '',
       haoyi: result.haoyi.value,
       tier: result.tierKey,
       code: result.code,
       labelId: result.label.id,
+      durationMs: durationMs,
+      questionTimings: timings,
     }).catch(() => {});
 
     if (window.Mascot) {

@@ -11,6 +11,12 @@ desktop.ini
 .idea/
 *.swp
 
+# 表情包素材（体积大，暂不入库；当前网页用 emoji 占位）
+img/sticker/
+
+# 含 secret key 的本地测试脚本（绝不能进公开仓库！）
+scripts/test-e2e-info.js
+
 # 日志
 *.log
 npm-debug.log*
