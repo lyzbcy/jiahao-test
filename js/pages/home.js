@@ -81,20 +81,51 @@ const HomePage = (function () {
 
     _container.querySelectorAll('.quiz-opt').forEach(btn => {
       btn.onclick = () => {
-        // 记录本题耗时
-        _timings[q.id] = Date.now() - _qStartTime;
-        _answers.push({ qid: q.id, optionKey: btn.dataset.key });
+        // 记录本题耗时（首次答题写入，返回重答不覆盖）
+        if (_timings[q.id] == null) _timings[q.id] = Date.now() - _qStartTime;
+        // 更新答案（返回重答时替换而非追加）
+        const exist = _answers.findIndex(a => a.qid === q.id);
+        const optKey = btn.dataset.key;
+        if (exist >= 0) _answers[exist].optionKey = optKey;
+        else _answers.push({ qid: q.id, optionKey: optKey });
+
+        // 弹出契合表情包反馈（按所选选项的维度极性取图）
+        const opt = q.options.find(o => o.key === optKey);
+        showStickerFeedback(q, opt);
         if (window.Mascot) window.Mascot.setState('happy');
         if (_idx < questions.length - 1) {
           _idx++;
           _qStartTime = Date.now();
-          renderQuestion();
+          setTimeout(renderQuestion, 480);
         } else {
-          finish();
+          setTimeout(finish, 480);
         }
       };
     });
     window.scrollTo(0, 0);
+  }
+
+  // 答题反馈：弹一张契合表情包，480ms 后消失（被下一题渲染覆盖）
+  function showStickerFeedback(q, opt) {
+    if (!window.Sticker || !window.Sticker.ready()) return;
+    let file = null;
+    // 优先用题库/选项指定的 sticker
+    if (opt && opt.sticker) file = opt.sticker;
+    else if (q.sticker) file = q.sticker;
+    // 否则按维度极性取
+    if (!file && opt && q.dim) {
+      const pole = opt.pole;
+      // 豪极(Z/E/S 的第二极、ZJ 的 Z 第一极)取"得瑟"系，非豪极取"乖巧/发呆"系
+      const isHao = (q.dim === 'ZZ' && pole === 'Z') || (q.dim === 'QE' && pole === 'E') ||
+                    (q.dim === 'LS' && pole === 'S') || (q.dim === 'ZJ' && pole === 'Z');
+      file = isHao ? window.Sticker.byMood('smug') : window.Sticker.byMood('cute');
+    }
+    if (!file) return;
+    const popup = document.createElement('div');
+    popup.className = 'sticker-popup';
+    popup.innerHTML = window.Sticker.html(file, 'sticker-popup-img', '😎');
+    _container.appendChild(popup);
+    setTimeout(() => popup.remove(), 460);
   }
 
   function finish() {

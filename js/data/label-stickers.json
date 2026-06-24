@@ -1,0 +1,17 @@
+{
+  "_comment": "本命嘉豪 → 装饰表情包映射。label_id → [表情包文件名]。从周三涵系列里挑情绪契合的。",
+  "quandui":   ["棒棒哒.png", "写作业.png"],
+  "kongqi":    ["奔跑.png", "快跑奔跑.png"],
+  "zuoti":     ["写作业.png", "专注.png"],
+  "dadi":      ["专注.png", "耍帅.png"],
+  "yuzhong":   ["下雨了.png", "伤心哭泣.png"],
+  "heiyi":     ["冷酷杀手.png", "傲立.png"],
+  "wenxue":    ["思考.png", "入迷.png"],
+  "jinrong":   ["膨胀.png", "得意.png"],
+  "heike":     ["盯.png", "专注.png"],
+  "bingwang":  ["热血.png", "杀气腾腾.png"],
+  "qiuchang":  ["加油.png", "击掌.png"],
+  "shizu":     ["骄傲.png", "王从天降.png"],
+  "zizai":     ["不会吧.png", "偷笑.png"],
+  "xianhao":   ["闪耀.png", "飞天.png"]
+}

@@ -1,9 +1,9 @@
 // mascot.js — 嘉豪吉祥物状态机
 // 吉祥物是周三涵表情包风格的卡通形象，全程陪伴：首页迎接、做题反应、开盒转圈
-// 状态 → 表情/台词 的映射。图片未就位时用 emoji 占位。
+// 状态 → 表情包图/台词 的映射。表情包就位时显示图，否则回退 emoji。
 const Mascot = (function () {
 
-  // 状态定义：state → { emoji, line[] }
+  // 状态定义：state → { emoji(回退), line[] }；表情包图由 Sticker.byState 动态取
   const STATES = {
     idle:   { emoji: '😎', lines: ['我就是嘉豪，嘉豪就是我。', '测测你的豪意值？'] },
     peek:   { emoji: '👀', lines: ['这个选项……有内味了。', '嗯哼，继续。'] },
@@ -39,7 +39,14 @@ const Mascot = (function () {
     if (!_el) return;
     const s = STATES[_state];
     const line = s.lines[Math.floor(Math.random() * s.lines.length)];
-    _el.querySelector('.mascot-emoji').textContent = s.emoji;
+    // 优先用表情包图，就位失败回退 emoji
+    const emojiSlot = _el.querySelector('.mascot-emoji');
+    const stickerFile = (window.Sticker && window.Sticker.ready()) ? window.Sticker.byState(_state) : null;
+    if (stickerFile) {
+      emojiSlot.innerHTML = window.Sticker.html(stickerFile, 'mascot-sticker', s.emoji);
+    } else {
+      emojiSlot.textContent = s.emoji;
+    }
     _el.querySelector('.mascot-line').textContent = line;
     _el.classList.remove('state-idle','state-peek','state-spin','state-happy','state-cry','state-angry','state-box');
     _el.classList.add('state-' + _state);

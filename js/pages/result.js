@@ -19,6 +19,17 @@ const ResultPage = (function () {
     return ` ${name}${val >= 0 ? '+' : ''}${val}`;
   }
 
+  // 本命嘉豪装饰表情包（从 label-stickers 映射取，配合豪型情绪）
+  function labelStickerDecor(label) {
+    if (!window.Sticker || !window.Sticker.ready()) return '';
+    const map = (window.JIAHAO_DATA.labelStickers) || {};
+    const files = map[label.id] || [];
+    if (!files.length) return '';
+    return '<div class="label-stickers">' +
+      files.map(f => window.Sticker.html(f, 'label-sticker', label.emoji || '😎')).join('') +
+      '</div>';
+  }
+
   function mount(sel) {
     const el = document.querySelector(sel);
     const answers = JSON.parse(sessionStorage.getItem('jiahao_answers') || '[]');
@@ -73,6 +84,7 @@ const ResultPage = (function () {
           ${labelVisual(label)}
           <h1 class="label-name">${label.name}</h1>
           <p class="label-subtitle">${label.subtitle}</p>
+          ${labelStickerDecor(label)}
         </div>
 
         <div class="haoyi-box">

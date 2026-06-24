@@ -5,6 +5,7 @@
     questions: 'js/data/questions.json',
     types:     'js/data/types.json',
     labels:    'js/data/labels.json',
+    labelStickers: 'js/data/label-stickers.json',
   };
 
   // 加载所有数据（并行）
@@ -60,9 +61,11 @@
     }
     // 2. 初始化云后端（失败不阻塞，自动回退 localStorage）
     try { await window.SupabaseConfig.init(); } catch (e) { /* 静默回退 */ }
-    // 3. 吉祥物
+    // 3. 初始化表情包索引（失败不阻塞，回退 emoji）
+    try { await window.Sticker.init(); } catch (e) { /* 静默回退 */ }
+    // 4. 吉祥物
     try { window.Mascot.init('#mascot'); } catch (e) { /* 忽略 */ }
-    // 4. 路由
+    // 5. 路由
     window.addEventListener('hashchange', router);
     router();
   }

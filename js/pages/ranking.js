@@ -55,9 +55,17 @@ const RankingPage = (function () {
       const name = r.nickname || ('匿名嘉豪' + (1000 + i));
       const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `<span class="rank-no">${i + 1}</span>`;
       const labelName = r.label_id ? (window.Labels.get(r.label_id) || {}).name : '';
+      // 前三名加契合表情包装饰
+      let stickerDecor = '';
+      if (i < 3 && window.Sticker && window.Sticker.ready()) {
+        const mood = i === 0 ? 'smug' : i === 1 ? 'happy' : 'encourage';
+        const f = window.Sticker.byMood(mood);
+        if (f) stickerDecor = window.Sticker.html(f, 'rank-sticker', '🎉');
+      }
       return `
         <div class="rank-row ${i < 3 ? 'rank-top' : ''}" data-detail="${makeDetail(r)}">
           <div class="rank-medal">${medal}</div>
+          ${stickerDecor}
           <div class="rank-info">
             <div class="rank-name">${escapeHtml(name)}</div>
             <div class="rank-meta">
