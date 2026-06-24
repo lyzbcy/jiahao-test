@@ -323,9 +323,14 @@ html, body {
 }
 .cell:hover { transform: translateY(-4px); }
 .cell-img {
-  width: 64px; height: 64px; margin: 0 auto 8px; border-radius: 50%;
+  width: 70px; height: 84px; margin: 0 auto 8px; border-radius: 14px;
   background: var(--bg-pink); border: 2px solid transparent;
   display: flex; align-items: center; justify-content: center; font-size: 36px;
+  overflow: hidden;
+}
+/* 豪型全身图：填满容器，保持比例 */
+.cell-img img {
+  width: 100%; height: 100%; object-fit: contain;
 }
 .cell.unlocked .cell-img { background: linear-gradient(135deg, var(--bg-cream), #fff); }
 .cell.locked { opacity: 0.55; filter: grayscale(0.6); }
