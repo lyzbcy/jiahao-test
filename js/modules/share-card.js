@@ -2,6 +2,17 @@
 // 把"本命嘉豪 + 豪意值 + 豪型代码 + 骚话"画成一张可保存发朋友圈的图
 const ShareCard = (function () {
 
+  // 加载图片，失败 reject（用于分享卡回退 emoji）
+  function loadImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
   /**
    * @param {Object} result evaluate() 的结果 { label, haoyi, code, tierKey }
    * @param {Object} opts { nickname }
@@ -43,7 +54,27 @@ const ShareCard = (function () {
     ctx.strokeStyle = tier.color || '#FFB400'; ctx.lineWidth = 6;
     roundedRect(ctx, W / 2 - 200, 200, 400, 400, 40); ctx.stroke();
     ctx.restore();
-    drawText(ctx, label.emoji || '😎', W / 2, 440, { font: '180px sans-serif', align: 'center' });
+    // 标签图：有图异步加载后绘制（cover 适配），失败/无图回退 emoji
+    const useImg = label.img && label.img !== 'emoji';
+    if (useImg) {
+      try {
+        const img = await loadImage('img/labels/' + label.img);
+        // cover 方式绘制到 360x360 圆心区域（白底圆角框内）
+        const bx = W / 2 - 180, by = 220, bw = 360, bh = 360;
+        const scale = Math.max(bw / img.width, bh / img.height);
+        const dw = img.width * scale, dh = img.height * scale;
+        ctx.save();
+        ctx.beginPath();
+        roundedRect(ctx, bx, by, bw, bh, 32);
+        ctx.clip();
+        ctx.drawImage(img, bx + (bw - dw) / 2, by + (bh - dh) / 2, dw, dh);
+        ctx.restore();
+      } catch (e) {
+        drawText(ctx, label.emoji || '😎', W / 2, 440, { font: '180px sans-serif', align: 'center' });
+      }
+    } else {
+      drawText(ctx, label.emoji || '😎', W / 2, 440, { font: '180px sans-serif', align: 'center' });
+    }
 
     // 标签名
     drawText(ctx, label.name, W / 2, 660, { font: 'bold 56px "ZCOOL KuaiLe",sans-serif', color: '#222', align: 'center' });

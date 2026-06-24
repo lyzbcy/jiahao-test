@@ -2,6 +2,17 @@
 // 读取答案 → 引擎计算 → 展示：本命嘉豪卡 + 豪意值 + 维度条 + 骚话 + 分享 + 上云
 const ResultPage = (function () {
 
+  // 生成标签视觉：有图显示 img（加载失败回退 emoji），无图显示 emoji
+  function labelVisual(label, extraClass) {
+    const cls = 'label-emoji ' + (extraClass || '') + ' ' + (label.special || '');
+    const emoji = label.emoji || '😎';
+    if (label.img && label.img !== 'emoji') {
+      return `<img class="${cls} label-img" src="img/labels/${label.img}" alt="${label.name}"
+        onerror="this.outerHTML='<div class=&quot;${cls}&quot;>${emoji}</div>'">`;
+    }
+    return `<div class="${cls}">${emoji}</div>`;
+  }
+
   function mount(sel) {
     const el = document.querySelector(sel);
     const answers = JSON.parse(sessionStorage.getItem('jiahao_answers') || '[]');
@@ -44,7 +55,7 @@ const ResultPage = (function () {
         ${result.tierKey === 'ur' ? '<div class="rainbow-bg"></div>' : ''}
 
         <div class="label-card" style="border-color:${tier.color}">
-          <div class="label-emoji ${label.special || ''}">${label.emoji || '😎'}</div>
+          ${labelVisual(label)}
           <h1 class="label-name">${label.name}</h1>
           <p class="label-subtitle">${label.subtitle}</p>
         </div>

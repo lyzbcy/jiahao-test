@@ -39,9 +39,13 @@ const CollectionPage = (function () {
   function cell(d, has) {
     const tier = window.Labels.tier(d.tier);
     if (has) {
+      // 有图显示图，失败回退 emoji
+      const visual = (d.img && d.img !== 'emoji')
+        ? `<img src="img/labels/${d.img}" alt="${d.name}" onerror="this.outerHTML='${d.emoji || '😎'}'">`
+        : (d.emoji || '😎');
       return `
         <div class="cell unlocked ${d.tier}">
-          <div class="cell-img" style="border-color:${tier.color}">${d.emoji || '😎'}</div>
+          <div class="cell-img" style="border-color:${tier.color}">${visual}</div>
           <div class="cell-name">${d.name}</div>
           <div class="cell-stars" style="color:${tier.color}">${tier.stars || ''}</div>
         </div>`;
