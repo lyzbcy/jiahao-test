@@ -79,9 +79,11 @@ const ShareCard = (function () {
     // 标签名
     drawText(ctx, label.name, W / 2, 660, { font: 'bold 56px "ZCOOL KuaiLe",sans-serif', color: '#222', align: 'center' });
 
-    // 豪意值大数字
+    // 豪意值大数字（保留 3 位小数，字号随位数自适应避免溢出）
+    const haoyiStr = Number(result.haoyi.value).toFixed(3);
+    const fontSize = haoyiStr.length > 5 ? 72 : 90;  // 带小数时缩小字号
     drawText(ctx, '豪意值', W / 2, 740, { font: '28px sans-serif', color: '#888', align: 'center' });
-    drawText(ctx, String(result.haoyi.value), W / 2, 820, { font: 'bold 90px "ZCOOL KuaiLe",sans-serif', color: tier.color || '#FFB400', align: 'center' });
+    drawText(ctx, haoyiStr, W / 2, 820, { font: 'bold ' + fontSize + 'px "ZCOOL KuaiLe",sans-serif', color: tier.color || '#FFB400', align: 'center' });
 
     // 豪型代码
     drawText(ctx, '豪型 ' + result.code, W / 2, 890, { font: 'bold 32px monospace', color: '#7C3AED', align: 'center' });

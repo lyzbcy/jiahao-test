@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS jiahao_records (
   contact         text,              -- 联系方式（可不填：抖音号/邮箱/QQ/微信）
   contact_type    text,              -- 联系方式类型
   province        text,              -- 省份（可不填，默认"嘉豪省"）
-  haoyi           int NOT NULL DEFAULT 0,    -- 豪意值
+  haoyi           numeric(6,3) NOT NULL DEFAULT 0,    -- 豪意值（精确到小数点后3位，争小数位避免满分并列）
   tier            text,              -- 稀有度 n/r/sr/ssr/ur
   code            text,              -- 豪型代码 如 ZESZ
   label_id        text,              -- 本命嘉豪 id
@@ -46,3 +46,9 @@ COMMENT ON TABLE jiahao_records IS '嘉豪值测试做题记录';
 COMMENT ON COLUMN jiahao_records.contact IS '用户自愿填写的联系方式，对外可见（用于排行榜点击查看）';
 
 -- 完成后会显示 "Success. No rows returned"
+
+-- ============================================================
+-- 迁移：已有项目把 haoyi 从 int 改成 numeric(6,3)（支持小数豪意值）
+-- 在 SQL Editor 单独执行下面这句（已建表的项目用，新项目建表时已是 numeric）
+-- ============================================================
+-- ALTER TABLE jiahao_records ALTER COLUMN haoyi TYPE numeric(6,3) USING haoyi::numeric(6,3);

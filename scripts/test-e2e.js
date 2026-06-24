@@ -45,9 +45,13 @@ function loadModule(rel, varName) {
   Labels.init(labels, types);
 
   // 3. 模拟用户答题（构造一个"装杯+中二+整活+不自觉"的全嘉豪答案）
-  console.log('\n② 模拟用户答 20 题（全选嘉豪选项）...');
+  console.log('\n② 模拟用户答 ' + questions.length + ' 题（全选嘉豪选项/滑块拉满）...');
   const answers = questions.map((q, i) => {
-    // 每题选 score 最高的选项（最嘉豪）
+    if (q.type === 'slider') {
+      // 滑块题：拉满（最嘉豪）
+      return { qid: q.id, value: (q.scale && q.scale.max) || 7 };
+    }
+    // 选择题：选 score 最高的选项（最嘉豪）
     const opt = q.options.slice().sort((a, b) => b.score - a.score)[0];
     return { qid: q.id, optionKey: opt.key };
   });

@@ -31,28 +31,36 @@ function ok(name, cond, extra) {
 }
 
 console.log('\n=== 1. 数据完整性 ===');
-ok('题库 20 题', questions.length === 20, '实际 ' + questions.length);
+const choiceQs = questions.filter(q => q.type !== 'slider');
+const sliderQs = questions.filter(q => q.type === 'slider');
+ok('选择题 20 题', choiceQs.length === 20, '实际 ' + choiceQs.length);
+ok('滑块题 6 题', sliderQs.length === 6, '实际 ' + sliderQs.length);
 ok('标签 14 款（12常规+2隐藏）', labels.length === 14, '实际 ' + labels.length);
 ok('维度 4 个', types.dimensions.length === 4, '实际 ' + types.dimensions.length);
 ok('分档 5 档', types.tiers.length === 5, '实际 ' + types.tiers.length);
-// 每维度正好 5 题
+// 每维度选择题正好 5 题（滑块题另算）
 types.dimensions.forEach(d => {
-  const n = questions.filter(q => q.dim === d.id).length;
-  ok('维度 ' + d.id + ' 有 5 题', n === 5, '实际 ' + n);
+  const n = choiceQs.filter(q => q.dim === d.id).length;
+  ok('维度 ' + d.id + ' 选择题 5 题', n === 5, '实际 ' + n);
+});
+// 滑块题字段完整性
+sliderQs.forEach(q => {
+  ok('滑块题 ' + q.id + ' 有 scale', !!q.scale && q.scale.max > q.scale.min);
+  ok('滑块题 ' + q.id + ' 有 pole', !!q.pole);
 });
 
 console.log('\n=== 2. 构造各种答案，验证引擎不崩 + 结果合理 ===');
 
-// 造答案：每题选某个选项。poles: 想让每题选哪一极
-function makeAnswers(poleByDim) {
+// 造答案：选择题按维度极选，滑块题按 value（默认 max 强度）
+function makeAnswers(poleByDim, sliderVal) {
+  sliderVal = sliderVal == null ? 7 : sliderVal;  // 默认滑块拉满
   return questions.map(q => {
+    if (q.type === 'slider') {
+      return { qid: q.id, value: sliderVal };
+    }
     const wantPole = poleByDim[q.dim];
     const opt = q.options.find(o => o.pole === wantPole);
-    if (!opt) {
-      // 没有目标极，取第一个
-      return { qid: q.id, optionKey: q.options[0].key };
-    }
-    // 优先选 score 高的（更强烈）
+    if (!opt) return { qid: q.id, optionKey: q.options[0].key };
     const opts = q.options.filter(o => o.pole === wantPole).sort((a,b) => b.score - a.score);
     return { qid: q.id, optionKey: opts[0].key };
   });
@@ -117,6 +125,10 @@ console.log('\n=== 4. 14 款标签至少能被针对性构造触发 ===');
 // 对低 tier 标签，hint 维度也用 min 强度压低；高 tier 用 max 强度抬高。
 function answersByPolesTuned(poleMap, strength) {
   return questions.map(q => {
+    if (q.type === 'slider') {
+      // 滑块题：strength=max 拉满(7)，min 拉低(1)
+      return { qid: q.id, value: strength === 'max' ? (q.scale.max || 7) : (q.scale.min || 1) };
+    }
     const wantPole = poleMap[q.dim];
     const opts = q.options.filter(o => o.pole === wantPole);
     const pick = strength === 'max'
@@ -171,6 +183,31 @@ labels.forEach(def => {
   }
 });
 ok('14 款标签全部可针对性触发', allTriggerable, notTriggered.join('; '));
+
+console.log('\n=== 5. 滑块题计分 + 豪意值小数化 ===');
+{
+  // 全选择题答案（无滑块），验证滑块题缺失时不崩
+  const choiceOnly = choiceQs.map(q => {
+    const opt = q.options[q.options.length - 1];
+    return { qid: q.id, optionKey: opt.key };
+  });
+  const r = TestEngine.evaluate(choiceOnly, questions, types, labels);
+  ok('缺少滑块题答案不崩溃', typeof r.haoyi.value === 'number');
+}
+{
+  // 全高豪极 + 滑块全拉满 → 代码 ZESZ
+  const ans = makeAnswers({ ZZ: 'Z', QE: 'E', LS: 'S', ZJ: 'Z' }, 7);
+  const r = TestEngine.evaluate(ans, questions, types, labels);
+  ok('滑块全满+全高豪极 代码 ZESZ', r.code === 'ZESZ', r.code);
+}
+{
+  // 豪意值小数化：带思考时间+昵称加成后应能产生小数
+  const ans = makeAnswers({ ZZ: 'Z', QE: 'Q', LS: 'L', ZJ: 'J' }, 4);
+  const r = TestEngine.evaluate(ans, questions, types, labels, { q6: 2500 }, { nickname: '豪哥' });
+  const v = r.haoyi.value;
+  ok('豪意值是数字且在 0-100', typeof v === 'number' && v >= 0 && v <= 100, '值=' + v);
+  ok('豪意值含小数（精确到3位）', v % 1 !== 0, '值=' + v + '（少数组合可能恰好整数）');
+}
 
 console.log('\n=========================');
 console.log('  通过 ' + pass + ' / 失败 ' + fail);

@@ -5,11 +5,32 @@
     "scenario": "教室",
     "text": "早上出门前，你照镜子的真实时长是？",
     "options": [
-      { "key": "A", "text": "镜子？哪有镜子。出门就行", "pole": "P", "score": 1 },
-      { "key": "B", "text": "捯饬两下，舒服就行", "pole": "P", "score": 1 },
-      { "key": "C", "text": "精心搭配，今天这身要有'氛围感'", "pole": "Z", "score": 1 },
-      { "key": "D", "text": "照镜子能照到迟到，但帅是一辈子的事", "pole": "Z", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "镜子？哪有镜子。出门就行",
+        "pole": "P",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "捯饬两下，舒服就行",
+        "pole": "P",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "精心搭配，今天这身要有'氛围感'",
+        "pole": "Z",
+        "score": 1
+      },
+      {
+        "key": "D",
+        "text": "照镜子能照到迟到，但帅是一辈子的事",
+        "pole": "Z",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q2",
@@ -17,11 +38,32 @@
     "scenario": "穿搭",
     "text": "你的衣柜里最'嘉豪'的单品是？",
     "options": [
-      { "key": "A", "text": "妈买的卫衣，能穿就行", "pole": "P", "score": 1 },
-      { "key": "B", "text": "一件黑色连帽衫，口罩一戴谁也不爱", "pole": "Z", "score": 2 },
-      { "key": "C", "text": "工装裤+战术腰带+登山靴，随时准备出任务", "pole": "Z", "score": 2 },
-      { "key": "D", "text": "校服，朴素是美德", "pole": "P", "score": 1 }
-    ]
+      {
+        "key": "A",
+        "text": "妈买的卫衣，能穿就行",
+        "pole": "P",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "一件黑色连帽衫，口罩一戴谁也不爱",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "C",
+        "text": "工装裤+战术腰带+登山靴，随时准备出任务",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "校服，朴素是美德",
+        "pole": "P",
+        "score": 1
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q3",
@@ -29,11 +71,32 @@
     "scenario": "教室",
     "text": "老师让你上黑板做题，你解出来的那一刻……",
     "options": [
-      { "key": "A", "text": "默默回座位，深藏功与名", "pole": "P", "score": 1 },
-      { "key": "B", "text": "转身那一刻，给后排兄弟一个'懂的都懂'的眼神", "pole": "Z", "score": 2 },
-      { "key": "C", "text": "粉笔一甩，潇洒落座，像电影男主", "pole": "Z", "score": 2 },
-      { "key": "D", "text": "只想赶紧坐下，别让人看", "pole": "P", "score": 1 }
-    ]
+      {
+        "key": "A",
+        "text": "默默回座位，深藏功与名",
+        "pole": "P",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "转身那一刻，给后排兄弟一个'懂的都懂'的眼神",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "C",
+        "text": "粉笔一甩，潇洒落座，像电影男主",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "只想赶紧坐下，别让人看",
+        "pole": "P",
+        "score": 1
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q4",
@@ -41,11 +104,32 @@
     "scenario": "操场",
     "text": "体育课自由活动，你的本能选择是？",
     "options": [
-      { "key": "A", "text": "找个角落发呆/聊天", "pole": "P", "score": 1 },
-      { "key": "B", "text": "加入比赛，低调赢球", "pole": "P", "score": 1 },
-      { "key": "C", "text": "一个人在篮下反复空气投篮，沉浸式 NBA 总决赛", "pole": "Z", "score": 2 },
-      { "key": "D", "text": "对着空气练后仰跳投，还配了现场解说音效", "pole": "Z", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "找个角落发呆/聊天",
+        "pole": "P",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "加入比赛，低调赢球",
+        "pole": "P",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "一个人在篮下反复空气投篮，沉浸式 NBA 总决赛",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "对着空气练后仰跳投，还配了现场解说音效",
+        "pole": "Z",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q5",
@@ -53,11 +137,58 @@
     "scenario": "教室",
     "text": "自习课很安静，你突然很想听一首歌，你会……",
     "options": [
-      { "key": "A", "text": "戴耳机，绝不打扰别人", "pole": "Q", "score": 1 },
-      { "key": "B", "text": "默默哼两句算了", "pole": "Q", "score": 1 },
-      { "key": "C", "text": "脑内开启演唱会，手指在桌上虚空打碟", "pole": "E", "score": 2 },
-      { "key": "D", "text": "直接起身在教室中央表演 Alan Walker《The Spectre》", "pole": "E", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "戴耳机，绝不打扰别人",
+        "pole": "Q",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "默默哼两句算了",
+        "pole": "Q",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "脑内开启演唱会，手指在桌上虚空打碟",
+        "pole": "E",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "直接起身在教室中央表演 Alan Walker《The Spectre》",
+        "pole": "E",
+        "score": 2
+      }
+    ],
+    "type": "choice"
+  },
+  {
+    "id": "s1",
+    "type": "slider",
+    "dim": "ZZ",
+    "text": "你觉得自己的“嘉豪浓度”有多高？",
+    "scale": {
+      "min": 1,
+      "max": 7
+    },
+    "minLabel": "我是个正常人",
+    "maxLabel": "我就是嘉豪本豪",
+    "pole": "Z"
+  },
+  {
+    "id": "s2",
+    "type": "slider",
+    "dim": "QE",
+    "text": "中二病在你身上发作的频率？",
+    "scale": {
+      "min": 1,
+      "max": 7
+    },
+    "minLabel": "早已脱敏",
+    "maxLabel": "每日发作",
+    "pole": "E"
   },
   {
     "id": "q6",
@@ -66,11 +197,32 @@
     "keyQuestion": true,
     "text": "深夜一个人走夜路，你脑子里在想什么？",
     "options": [
-      { "key": "A", "text": "明天早饭吃什么", "pole": "Q", "score": 1 },
-      { "key": "B", "text": "赶紧到家，注意安全", "pole": "Q", "score": 1 },
-      { "key": "C", "text": "想象身后有人在追杀我，我是逃亡中的特工", "pole": "E", "score": 2 },
-      { "key": "D", "text": "脑补自己雨中漫步的悲情 BGM，我就是主角", "pole": "E", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "明天早饭吃什么",
+        "pole": "Q",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "赶紧到家，注意安全",
+        "pole": "Q",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "想象身后有人在追杀我，我是逃亡中的特工",
+        "pole": "E",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "脑补自己雨中漫步的悲情 BGM，我就是主角",
+        "pole": "E",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q7",
@@ -78,11 +230,32 @@
     "scenario": "课堂",
     "text": "讲到'力拔山兮气盖世'这种中二台词时，你的反应是？",
     "options": [
-      { "key": "A", "text": "认真记笔记，考点嘛", "pole": "Q", "score": 1 },
-      { "key": "B", "text": "悄悄觉得有点尬，但忍住", "pole": "Q", "score": 1 },
-      { "key": "C", "text": "心里默默接上下一句，还配了招式动作", "pole": "E", "score": 2 },
-      { "key": "D", "text": "当场站起来比划，'这一招叫力拔山！'", "pole": "E", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "认真记笔记，考点嘛",
+        "pole": "Q",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "悄悄觉得有点尬，但忍住",
+        "pole": "Q",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "心里默默接上下一句，还配了招式动作",
+        "pole": "E",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "当场站起来比划，'这一招叫力拔山！'",
+        "pole": "E",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q8",
@@ -90,11 +263,32 @@
     "scenario": "日常",
     "text": "你的手机备忘录/日记里，最可能存什么？",
     "options": [
-      { "key": "A", "text": "购物清单、待办事项", "pole": "Q", "score": 1 },
-      { "key": "B", "text": "学习计划、考试倒计时", "pole": "Q", "score": 1 },
-      { "key": "C", "text": "自己写的小说设定、世界观、主角技能树", "pole": "E", "score": 2 },
-      { "key": "D", "text": "'我的真实身份'备忘录——只为某天被人发现", "pole": "E", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "购物清单、待办事项",
+        "pole": "Q",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "学习计划、考试倒计时",
+        "pole": "Q",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "自己写的小说设定、世界观、主角技能树",
+        "pole": "E",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "'我的真实身份'备忘录——只为某天被人发现",
+        "pole": "E",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q9",
@@ -102,11 +296,32 @@
     "scenario": "教室",
     "text": "老师提问一个超难的题，全场沉默，你……",
     "options": [
-      { "key": "A", "text": "低头假装在翻书", "pole": "L", "score": 1 },
-      { "key": "B", "text": "认真想，会就举手", "pole": "L", "score": 1 },
-      { "key": "C", "text": "大声报出一个离谱答案，活跃气氛", "pole": "S", "score": 2 },
-      { "key": "D", "text": "站起来答对，然后喊一句'全对！'庆祝一下", "pole": "S", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "低头假装在翻书",
+        "pole": "L",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "认真想，会就举手",
+        "pole": "L",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "大声报出一个离谱答案，活跃气氛",
+        "pole": "S",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "站起来答对，然后喊一句'全对！'庆祝一下",
+        "pole": "S",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q10",
@@ -114,11 +329,58 @@
     "scenario": "校园",
     "text": "校运会开幕式，你被安排举牌子，你会？",
     "options": [
-      { "key": "A", "text": "老老实实举完全程", "pole": "L", "score": 1 },
-      { "key": "B", "text": "举着举着有点累，偷偷换只手", "pole": "L", "score": 1 },
-      { "key": "C", "text": "经过主席台时来个花式敬礼", "pole": "S", "score": 2 },
-      { "key": "D", "text": "把牌子当吉他，开一场游行演唱会", "pole": "S", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "老老实实举完全程",
+        "pole": "L",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "举着举着有点累，偷偷换只手",
+        "pole": "L",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "经过主席台时来个花式敬礼",
+        "pole": "S",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "把牌子当吉他，开一场游行演唱会",
+        "pole": "S",
+        "score": 2
+      }
+    ],
+    "type": "choice"
+  },
+  {
+    "id": "s3",
+    "type": "slider",
+    "dim": "LS",
+    "text": "你整活/造梗的能力有多强？",
+    "scale": {
+      "min": 1,
+      "max": 7
+    },
+    "minLabel": "老实本分",
+    "maxLabel": "花式整活",
+    "pole": "S"
+  },
+  {
+    "id": "s4",
+    "type": "slider",
+    "dim": "ZJ",
+    "text": "你对自己“嘉豪行为”的自觉程度？",
+    "scale": {
+      "min": 1,
+      "max": 7
+    },
+    "minLabel": "身在豪中不知豪",
+    "maxLabel": "我超清楚自己在装",
+    "pole": "Z"
   },
   {
     "id": "q11",
@@ -126,11 +388,32 @@
     "scenario": "聚会",
     "text": "一群人聚会冷场了，你通常是？",
     "options": [
-      { "key": "A", "text": "冷场就冷场，安静待着", "pole": "L", "score": 1 },
-      { "key": "B", "text": "附和别人的话题，不主动", "pole": "L", "score": 1 },
-      { "key": "C", "text": "抛个梗救场，气氛制造机就是我", "pole": "S", "score": 2 },
-      { "key": "D", "text": "当场表演才艺，冷场是不存在的", "pole": "S", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "冷场就冷场，安静待着",
+        "pole": "L",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "附和别人的话题，不主动",
+        "pole": "L",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "抛个梗救场，气氛制造机就是我",
+        "pole": "S",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "当场表演才艺，冷场是不存在的",
+        "pole": "S",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q12",
@@ -138,11 +421,32 @@
     "scenario": "才艺",
     "text": "假如要你在元旦晚会表演个节目，你会选？",
     "options": [
-      { "key": "A", "text": "我不上台，谢谢", "pole": "L", "score": 1 },
-      { "key": "B", "text": "合唱里混一个，安全", "pole": "L", "score": 1 },
-      { "key": "C", "text": "魔术/脱口秀，有点东西", "pole": "S", "score": 2 },
-      { "key": "D", "text": "一个人solo全场，灯光给我！全场最佳！🏆", "pole": "S", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "我不上台，谢谢",
+        "pole": "L",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "合唱里混一个，安全",
+        "pole": "L",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "魔术/脱口秀，有点东西",
+        "pole": "S",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "一个人solo全场，灯光给我！全场最佳！🏆",
+        "pole": "S",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q13",
@@ -151,11 +455,32 @@
     "keyQuestion": true,
     "text": "当你做出某个'嘉豪行为'后，被同学笑了，你的内心是？",
     "options": [
-      { "key": "A", "text": "我？我做啥了？（完全没意识到自己刚才很嘉豪）", "pole": "Z", "score": 2 },
-      { "key": "B", "text": "他们笑啥，我这么帅不是很正常吗", "pole": "Z", "score": 2 },
-      { "key": "C", "text": "心里咯噔一下：完了，是不是有点尬", "pole": "J", "score": 1 },
-      { "key": "D", "text": "表面镇定，内心疯狂复盘刚才哪里破功了", "pole": "J", "score": 1 }
-    ]
+      {
+        "key": "A",
+        "text": "我？我做啥了？（完全没意识到自己刚才很嘉豪）",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "B",
+        "text": "他们笑啥，我这么帅不是很正常吗",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "C",
+        "text": "心里咯噔一下：完了，是不是有点尬",
+        "pole": "J",
+        "score": 1
+      },
+      {
+        "key": "D",
+        "text": "表面镇定，内心疯狂复盘刚才哪里破功了",
+        "pole": "J",
+        "score": 1
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q14",
@@ -163,11 +488,32 @@
     "scenario": "旁观",
     "text": "看到班里有个同学空气投篮、自言自语，你觉得？",
     "options": [
-      { "key": "A", "text": "嗯，正常，我也经常这样", "pole": "Z", "score": 2 },
-      { "key": "B", "text": "他好酷，我想学", "pole": "Z", "score": 2 },
-      { "key": "C", "text": "有点尬，但他开心就好", "pole": "J", "score": 1 },
-      { "key": "D", "text": "这哥们也太嘉豪了，我绝不这样", "pole": "J", "score": 1 }
-    ]
+      {
+        "key": "A",
+        "text": "嗯，正常，我也经常这样",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "B",
+        "text": "他好酷，我想学",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "C",
+        "text": "有点尬，但他开心就好",
+        "pole": "J",
+        "score": 1
+      },
+      {
+        "key": "D",
+        "text": "这哥们也太嘉豪了，我绝不这样",
+        "pole": "J",
+        "score": 1
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q15",
@@ -176,11 +522,45 @@
     "keyQuestion": true,
     "text": "翻到自己以前很'中二'的照片/说说，你会？",
     "options": [
-      { "key": "A", "text": "觉得还挺帅，留作纪念", "pole": "Z", "score": 2 },
-      { "key": "B", "text": "啥？这哪中二了，挺正常的啊", "pole": "Z", "score": 2 },
-      { "key": "C", "text": "社会性死亡，秒删", "pole": "J", "score": 1 },
-      { "key": "D", "text": "脚趾抠出三室一厅，假装那不是我", "pole": "J", "score": 1 }
-    ]
+      {
+        "key": "A",
+        "text": "觉得还挺帅，留作纪念",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "B",
+        "text": "啥？这哪中二了，挺正常的啊",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "C",
+        "text": "社会性死亡，秒删",
+        "pole": "J",
+        "score": 1
+      },
+      {
+        "key": "D",
+        "text": "脚趾抠出三室一厅，假装那不是我",
+        "pole": "J",
+        "score": 1
+      }
+    ],
+    "type": "choice"
+  },
+  {
+    "id": "s5",
+    "type": "slider",
+    "dim": "ZZ",
+    "text": "如果豪意值能充值，你愿意充多少？",
+    "scale": {
+      "min": 1,
+      "max": 7
+    },
+    "minLabel": "一分不充",
+    "maxLabel": "倾家荡产",
+    "pole": "Z"
   },
   {
     "id": "q16",
@@ -188,11 +568,32 @@
     "scenario": "日常",
     "text": "朋友认真地对你说'你有点嘉豪'，你的反应？",
     "options": [
-      { "key": "A", "text": "嘉豪是啥？我吗？真的吗？（茫然）", "pole": "Z", "score": 2 },
-      { "key": "B", "text": "夸我呢是吧，嘿嘿", "pole": "Z", "score": 2 },
-      { "key": "C", "text": "心里一惊：被看穿了？", "pole": "J", "score": 1 },
-      { "key": "D", "text": "严肃否认：我没有，你认错人了", "pole": "J", "score": 1 }
-    ]
+      {
+        "key": "A",
+        "text": "嘉豪是啥？我吗？真的吗？（茫然）",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "B",
+        "text": "夸我呢是吧，嘿嘿",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "C",
+        "text": "心里一惊：被看穿了？",
+        "pole": "J",
+        "score": 1
+      },
+      {
+        "key": "D",
+        "text": "严肃否认：我没有，你认错人了",
+        "pole": "J",
+        "score": 1
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q17",
@@ -200,11 +601,32 @@
     "scenario": "玩梗",
     "text": "「穷玩车，富玩表，顶富都玩___」这个句式，你下意识接的是？",
     "options": [
-      { "key": "A", "text": "熊大快跑！跟着玩就完事了", "pole": "P", "score": 1 },
-      { "key": "B", "text": "没啥想法，这梗太老了", "pole": "P", "score": 1 },
-      { "key": "C", "text": "范小勤书法——品味更小众，才显格局", "pole": "Z", "score": 2 },
-      { "key": "D", "text": "原神。游戏鄙视链顶端，懂的都懂（推眼镜）", "pole": "Z", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "熊大快跑！跟着玩就完事了",
+        "pole": "P",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "没啥想法，这梗太老了",
+        "pole": "P",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "范小勤书法——品味更小众，才显格局",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "原神。游戏鄙视链顶端，懂的都懂（推眼镜）",
+        "pole": "Z",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q18",
@@ -212,11 +634,32 @@
     "scenario": "玩梗",
     "text": "你测了个 SBTI 测试，结果是「吗喽」，你会？",
     "options": [
-      { "key": "A", "text": "哈哈我确实是吗喽，认了认了", "pole": "Q", "score": 1 },
-      { "key": "B", "text": "这种测试没科学依据，图一乐", "pole": "Q", "score": 1 },
-      { "key": "C", "text": "重测！必须测到「尤物」才发朋友圈", "pole": "E", "score": 2 },
-      { "key": "D", "text": "我就是吗喽？不，我是隐藏款，重测到天荒地老", "pole": "E", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "哈哈我确实是吗喽，认了认了",
+        "pole": "Q",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "这种测试没科学依据，图一乐",
+        "pole": "Q",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "重测！必须测到「尤物」才发朋友圈",
+        "pole": "E",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "我就是吗喽？不，我是隐藏款，重测到天荒地老",
+        "pole": "E",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q19",
@@ -224,11 +667,32 @@
     "scenario": "玩梗",
     "text": "看到「范小勤写书法 288 一幅」，你的第一反应？",
     "options": [
-      { "key": "A", "text": "这字……不如我家小孩", "pole": "L", "score": 1 },
-      { "key": "B", "text": "消费主义，不理解", "pole": "L", "score": 1 },
-      { "key": "C", "text": "「一笔出八仙，逍遥似神游！」当场拿起笔模仿", "pole": "S", "score": 2 },
-      { "key": "D", "text": "立刻发朋友圈：勤字何解，怎落笔都不对", "pole": "S", "score": 2 }
-    ]
+      {
+        "key": "A",
+        "text": "这字……不如我家小孩",
+        "pole": "L",
+        "score": 1
+      },
+      {
+        "key": "B",
+        "text": "消费主义，不理解",
+        "pole": "L",
+        "score": 1
+      },
+      {
+        "key": "C",
+        "text": "「一笔出八仙，逍遥似神游！」当场拿起笔模仿",
+        "pole": "S",
+        "score": 2
+      },
+      {
+        "key": "D",
+        "text": "立刻发朋友圈：勤字何解，怎落笔都不对",
+        "pole": "S",
+        "score": 2
+      }
+    ],
+    "type": "choice"
   },
   {
     "id": "q20",
@@ -236,10 +700,44 @@
     "scenario": "玩梗",
     "text": "全班在玩「雷霆绷脸」挑战——看熊出没名场面忍住不笑，你？",
     "options": [
-      { "key": "A", "text": "第一秒就绷不住笑出声了，我是废物", "pole": "Z", "score": 2 },
-      { "key": "B", "text": "笑啥？这有啥好笑的（完全没get到笑点）", "pole": "Z", "score": 2 },
-      { "key": "C", "text": "死死绷住，面无表情——装酷是认真的", "pole": "J", "score": 1 },
-      { "key": "D", "text": "明明想笑，但咬紧牙关：不能破功", "pole": "J", "score": 1 }
-    ]
+      {
+        "key": "A",
+        "text": "第一秒就绷不住笑出声了，我是废物",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "B",
+        "text": "笑啥？这有啥好笑的（完全没get到笑点）",
+        "pole": "Z",
+        "score": 2
+      },
+      {
+        "key": "C",
+        "text": "死死绷住，面无表情——装酷是认真的",
+        "pole": "J",
+        "score": 1
+      },
+      {
+        "key": "D",
+        "text": "明明想笑，但咬紧牙关：不能破功",
+        "pole": "J",
+        "score": 1
+      }
+    ],
+    "type": "choice"
+  },
+  {
+    "id": "s6",
+    "type": "slider",
+    "dim": "QE",
+    "text": "看到别人装×，你内心的真实反应？",
+    "scale": {
+      "min": 1,
+      "max": 7
+    },
+    "minLabel": "关我什么事",
+    "maxLabel": "我比他更会装",
+    "pole": "E"
   }
 ]

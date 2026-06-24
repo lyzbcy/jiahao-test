@@ -16,6 +16,22 @@ const TestEngine = (function () {
     answers.forEach(ans => {
       const q = questions.find(x => x.id === ans.qid);
       if (!q) return;
+
+      // 滑块题：用户选 value(min~max)，归一化到 0~2 分（与选择题单题量级相当）
+      // 避免 1-7 直接累加压过选择题、导致档位漂移
+      if (q.type === 'slider') {
+        const v = Number(ans.value);
+        const sMin = (q.scale && q.scale.min) || 1;
+        const sMax = (q.scale && q.scale.max) || 7;
+        if (isNaN(v) || v < sMin || v > sMax) return;
+        // 归一化到 0.3~2.0（保留下限避免 0 分导致 ratio 退化）
+        const norm = 0.3 + ((v - sMin) / (sMax - sMin)) * 1.7;
+        const pole = q.pole;
+        dimScores[q.dim][pole] = (dimScores[q.dim][pole] || 0) + norm;
+        return;
+      }
+
+      // 选择题：按选项的 pole 累加 score
       const opt = q.options.find(o => o.key === ans.optionKey);
       if (!opt) return;
       const pole = opt.pole;
@@ -79,8 +95,10 @@ const TestEngine = (function () {
     const avg = contribs.reduce((s, v) => s + v, 0) / contribs.length;  // 0~1
 
     // 非线性映射：avg^1.3 让低豪压低、高豪抬高，同时中段可达 SR/SSR
-    let value = Math.round(Math.pow(avg, 1.3) * 100);
+    // 保留 3 位小数（不再取整）：让满分 100 几乎摸不到，大家争小数位
+    let value = Math.pow(avg, 1.3) * 100;
     value = Math.max(0, Math.min(100, value));
+    value = Math.round(value * 1000) / 1000;  // 精确到小数点后 3 位
 
     const tierKey = tierByValue(value, typeConfig);
     return { value, tierKey, rawSum: avg };
@@ -230,7 +248,9 @@ const TestEngine = (function () {
       nicknameReason = nb.reason;
     }
     // 最终豪意值 = 基础值 + 时间加成 + 昵称加成，clamp 0-100（影响稀有度/排名）
-    const finalValue = Math.max(0, Math.min(100, baseValue + timeBonusVal + nicknameBonusVal));
+    // 保留 3 位小数，避免满分并列、让排名能精确区分
+    let finalValue = Math.max(0, Math.min(100, baseValue + timeBonusVal + nicknameBonusVal));
+    finalValue = Math.round(finalValue * 1000) / 1000;
 
     return {
       dimScores, code, detail,

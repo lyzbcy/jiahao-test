@@ -74,7 +74,7 @@ const RankingPage = (function () {
               <span class="rank-code">${r.code || ''}</span>
             </div>
           </div>
-          <div class="rank-haoyi" style="color:${tier.color}">${r.haoyi}</div>
+          <div class="rank-haoyi" style="color:${tier.color}">${Number(r.haoyi).toFixed(3)}</div>
         </div>`;
     }).join('');
     bindDetailClick(list);

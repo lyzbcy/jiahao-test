@@ -19,6 +19,11 @@ const ResultPage = (function () {
     return ` ${name}${val >= 0 ? '+' : ''}${val}`;
   }
 
+  // 豪意值显示：固定 3 位小数（如 97.342）
+  function fmtHaoyi(v) {
+    return Number(v).toFixed(3);
+  }
+
   // 本命嘉豪装饰表情包（从 label-stickers 映射取，配合豪型情绪）
   function labelStickerDecor(label) {
     if (!window.Sticker || !window.Sticker.ready()) return '';
@@ -89,7 +94,7 @@ const ResultPage = (function () {
 
         <div class="haoyi-box">
           <div class="haoyi-label">你的豪意值</div>
-          <div class="haoyi-value" style="color:${tier.color}">${result.haoyi.value}</div>
+          <div class="haoyi-value" style="color:${tier.color}">${fmtHaoyi(result.haoyi.value)}</div>
           <div class="haoyi-max">/ 100</div>
         </div>
 
@@ -107,7 +112,7 @@ const ResultPage = (function () {
           <p class="copy-trash">💬 ${trash}</p>
           <p class="copy-beat">🏆 你的豪意值击败了全国 <b>${beat}%</b> 的嘉豪</p>
           <p class="copy-rarity">${rarity}</p>
-          ${result.purity ? `<p class="copy-purity">${result.purity.emoji} 豪意纯度：<b>${result.purity.label}</b>（基础 ${result.haoyi.baseValue}${formatBonus('思考', result.haoyi.timeBonus)}${formatBonus('人设', result.haoyi.nicknameBonus)} → ${result.haoyi.value}）</p><p class="copy-purity-desc">${result.purity.desc}</p>${result.nicknameReason ? `<p class="copy-purity-desc">🎭 人设加成：${result.nicknameReason}</p>` : ''}` : ''}
+          ${result.purity ? `<p class="copy-purity">${result.purity.emoji} 豪意纯度：<b>${result.purity.label}</b>（基础 ${fmtHaoyi(result.haoyi.baseValue)}${formatBonus('思考', result.haoyi.timeBonus)}${formatBonus('人设', result.haoyi.nicknameBonus)} → ${fmtHaoyi(result.haoyi.value)}）</p><p class="copy-purity-desc">${result.purity.desc}</p>${result.nicknameReason ? `<p class="copy-purity-desc">🎭 人设加成：${result.nicknameReason}</p>` : ''}` : ''}
         </div>
 
         <div class="label-desc">${label.desc}</div>

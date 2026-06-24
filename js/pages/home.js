@@ -59,22 +59,17 @@ const HomePage = (function () {
   function renderQuestion() {
     const questions = window.JIAHAO_DATA.questions;
     const q = questions[_idx];
+    const isSlider = q.type === 'slider';
 
     _container.innerHTML = `
       <div class="quiz">
         <div class="quiz-progress-bar">
           <div class="quiz-progress-fill" style="width:${(_idx / questions.length) * 100}%"></div>
         </div>
-        <div class="quiz-progress-text">第 ${_idx + 1} / ${questions.length} 题</div>
+        <div class="quiz-progress-text">第 ${_idx + 1} / ${questions.length} 题 ${isSlider ? '· 程度自评' : ''}</div>
         <div class="quiz-scenario">${q.scenario || ''}</div>
         <h2 class="quiz-text">${q.text}</h2>
-        <div class="quiz-options">
-          ${q.options.map(o => `
-            <button class="quiz-opt" data-key="${o.key}">
-              <span class="quiz-opt-key">${o.key}</span>
-              <span class="quiz-opt-text">${o.text}</span>
-            </button>`).join('')}
-        </div>
+        ${isSlider ? renderSlider(q) : renderChoices(q)}
         <div class="quiz-nav">
           <button class="btn-ghost quiz-prev" id="quizPrev" ${_idx === 0 ? 'disabled' : ''}>← 上一题</button>
           <span class="quiz-nav-hint">${_idx === 0 ? '开始答题' : '可返回修改（不影响计时）'}</span>
@@ -83,47 +78,109 @@ const HomePage = (function () {
 
     if (window.Mascot) window.Mascot.setState('peek');
 
+    // 上一题按钮
+    const prevBtn = document.getElementById('quizPrev');
+    if (prevBtn && _idx > 0) {
+      prevBtn.onclick = () => { _idx--; renderQuestion(); };
+    }
+
+    if (isSlider) {
+      bindSlider(q);
+    } else {
+      bindChoices(q);
+    }
+    window.scrollTo(0, 0);
+  }
+
+  // 渲染选择题选项
+  function renderChoices(q) {
+    return `
+      <div class="quiz-options">
+        ${q.options.map(o => `
+          <button class="quiz-opt" data-key="${o.key}">
+            <span class="quiz-opt-key">${o.key}</span>
+            <span class="quiz-opt-text">${o.text}</span>
+          </button>`).join('')}
+      </div>`;
+  }
+
+  // 渲染滑块题
+  function renderSlider(q) {
+    const min = (q.scale && q.scale.min) || 1;
+    const max = (q.scale && q.scale.max) || 7;
+    return `
+      <div class="quiz-slider-box">
+        <div class="quiz-slider-value" id="sliderValue">${min}</div>
+        <input type="range" class="quiz-slider" id="quizSlider"
+          min="${min}" max="${max}" step="1" value="${min}">
+        <div class="quiz-slider-labels">
+          <span>${q.minLabel || ''}</span>
+          <span>${q.maxLabel || ''}</span>
+        </div>
+        <button class="btn-primary btn-big" id="sliderConfirm">确认 →</button>
+      </div>`;
+  }
+
+  // 绑定选择题
+  function bindChoices(q) {
     // 如果这题之前答过，高亮已选选项
     const prevAns = _answers.find(a => a.qid === q.id);
     if (prevAns) {
       const sel = _container.querySelector(`.quiz-opt[data-key="${prevAns.optionKey}"]`);
       if (sel) sel.classList.add('quiz-opt-selected');
     }
-
-    // 上一题按钮
-    const prevBtn = document.getElementById('quizPrev');
-    if (prevBtn && _idx > 0) {
-      prevBtn.onclick = () => {
-        _idx--;
-        // 不重置 _qStartTime（首次计时已锁定），但给当前题一个新的展示起点用于显示
-        renderQuestion();
-      };
-    }
-
     _container.querySelectorAll('.quiz-opt').forEach(btn => {
       btn.onclick = () => {
-        // 记录本题耗时（首次答题写入，返回重答不覆盖）
         if (_timings[q.id] == null) _timings[q.id] = Date.now() - _qStartTime;
-        // 更新答案（返回重答时替换而非追加）
         const exist = _answers.findIndex(a => a.qid === q.id);
         const optKey = btn.dataset.key;
         if (exist >= 0) _answers[exist].optionKey = optKey;
         else _answers.push({ qid: q.id, optionKey: optKey });
 
-        // 弹出契合表情包反馈（按所选选项的维度极性取图）
         const opt = q.options.find(o => o.key === optKey);
         showStickerFeedback(q, opt);
         if (window.Mascot) window.Mascot.setState('happy');
-        if (_idx < questions.length - 1) {
-          _idx++;
-          _qStartTime = Date.now();
-          setTimeout(renderQuestion, 480);
-        } else {
-          setTimeout(finish, 480);
-        }
+        advance(q);
       };
     });
-    window.scrollTo(0, 0);
+  }
+
+  // 绑定滑块题
+  function bindSlider(q) {
+    const slider = document.getElementById('quizSlider');
+    const valEl = document.getElementById('sliderValue');
+    // 恢复之前选过的值
+    const prevAns = _answers.find(a => a.qid === q.id);
+    if (prevAns && prevAns.value != null) {
+      slider.value = prevAns.value;
+      valEl.textContent = prevAns.value;
+    }
+    slider.oninput = () => { valEl.textContent = slider.value; };
+    document.getElementById('sliderConfirm').onclick = () => {
+      if (_timings[q.id] == null) _timings[q.id] = Date.now() - _qStartTime;
+      const v = Number(slider.value);
+      const exist = _answers.findIndex(a => a.qid === q.id);
+      if (exist >= 0) _answers[exist].value = v;
+      else _answers.push({ qid: q.id, value: v });
+
+      // 滑块题反馈：按维度极性取图
+      const fakeOpt = { pole: q.pole };
+      showStickerFeedback(q, fakeOpt);
+      if (window.Mascot) window.Mascot.setState('happy');
+      advance(q);
+    };
+  }
+
+  // 统一前进逻辑
+  function advance(q) {
+    const questions = window.JIAHAO_DATA.questions;
+    if (_idx < questions.length - 1) {
+      _idx++;
+      _qStartTime = Date.now();
+      setTimeout(renderQuestion, 480);
+    } else {
+      setTimeout(finish, 480);
+    }
   }
 
   // 答题反馈：弹一张契合表情包，480ms 后消失（被下一题渲染覆盖）
