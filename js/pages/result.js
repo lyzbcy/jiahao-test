@@ -13,6 +13,12 @@ const ResultPage = (function () {
     return `<div class="${cls}">${emoji}</div>`;
   }
 
+  // 格式化加成：+15 / -2，0 则不显示
+  function formatBonus(name, val) {
+    if (!val) return '';
+    return ` ${name}${val >= 0 ? '+' : ''}${val}`;
+  }
+
   function mount(sel) {
     const el = document.querySelector(sel);
     const answers = JSON.parse(sessionStorage.getItem('jiahao_answers') || '[]');
@@ -25,13 +31,13 @@ const ResultPage = (function () {
 
     const D = window.JIAHAO_DATA;
     const timings = JSON.parse(sessionStorage.getItem('jiahao_timings') || '{}');
-    const result = window.TestEngine.evaluate(answers, D.questions, D.types, D.labels, timings);
+    const info = JSON.parse(sessionStorage.getItem('jiahao_userinfo') || '{}');
+    const result = window.TestEngine.evaluate(answers, D.questions, D.types, D.labels, timings, info);
     // 缓存结果，供分享/重看用
     sessionStorage.setItem('jiahao_result', JSON.stringify(result));
 
     render(el, result);
     // 上云记录（带用户信息 + 答题耗时，不阻塞）
-    const info = JSON.parse(sessionStorage.getItem('jiahao_userinfo') || '{}');
     const durationMs = Object.values(timings).reduce((s, v) => s + v, 0);
     window.Repo.saveRecord({
       nickname: info.nickname || '',
@@ -89,7 +95,7 @@ const ResultPage = (function () {
           <p class="copy-trash">💬 ${trash}</p>
           <p class="copy-beat">🏆 你的豪意值击败了全国 <b>${beat}%</b> 的嘉豪</p>
           <p class="copy-rarity">${rarity}</p>
-          ${result.purity ? `<p class="copy-purity">${result.purity.emoji} 豪意纯度：<b>${result.purity.label}</b>（基础豪意值 ${result.haoyi.baseValue} ${result.haoyi.timeBonus >= 0 ? '+' : ''}${result.haoyi.timeBonus} → ${result.haoyi.value}）</p><p class="copy-purity-desc">${result.purity.desc}</p>` : ''}
+          ${result.purity ? `<p class="copy-purity">${result.purity.emoji} 豪意纯度：<b>${result.purity.label}</b>（基础 ${result.haoyi.baseValue}${formatBonus('思考', result.haoyi.timeBonus)}${formatBonus('人设', result.haoyi.nicknameBonus)} → ${result.haoyi.value}）</p><p class="copy-purity-desc">${result.purity.desc}</p>${result.nicknameReason ? `<p class="copy-purity-desc">🎭 人设加成：${result.nicknameReason}</p>` : ''}` : ''}
         </div>
 
         <div class="label-desc">${label.desc}</div>

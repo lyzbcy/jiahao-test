@@ -206,11 +206,11 @@ const TestEngine = (function () {
   }
 
   /** 一站式：answers → 完整结果 */
-  function evaluate(answers, questions, typeConfig, labels, timings) {
+  function evaluate(answers, questions, typeConfig, labels, timings, userInfo) {
     const dimScores = score(answers, questions);
     const { code, detail } = classify(dimScores, typeConfig);
     const haoyi = calcHaoyi({ code, detail }, typeConfig);
-    // 本命嘉豪/四维代码用基础豪意值判定（不受思考时间影响——性格画像 vs 纯度独立）
+    // 本命嘉豪/四维代码用基础豪意值判定（不受思考时间/昵称影响——性格画像 vs 纯度独立）
     const ctx = { dimScores, code, detail, haoyi, tierKey: haoyi.tierKey };
     const { label, matched } = resolveLabel(ctx, labels, typeConfig);
 
@@ -222,15 +222,23 @@ const TestEngine = (function () {
       timeBonusVal = tb.total;
       purity = tb.purity;
     }
-    // 最终豪意值 = 基础值 + 时间加成，clamp 0-100（影响稀有度/排名）
-    const finalValue = Math.max(0, Math.min(100, baseValue + timeBonusVal));
+    // 昵称/联系方式加成：越爱表现越豪（标榜+4、留联系+3、自谦+2、普通-2）
+    let nicknameBonusVal = 0, nicknameReason = null;
+    if (userInfo) {
+      const nb = calcNicknameBonus(userInfo.nickname || '', userInfo.contact || '');
+      nicknameBonusVal = nb.bonus;
+      nicknameReason = nb.reason;
+    }
+    // 最终豪意值 = 基础值 + 时间加成 + 昵称加成，clamp 0-100（影响稀有度/排名）
+    const finalValue = Math.max(0, Math.min(100, baseValue + timeBonusVal + nicknameBonusVal));
 
     return {
       dimScores, code, detail,
-      haoyi: { value: finalValue, baseValue, timeBonus: timeBonusVal, tierKey: tierByValue(finalValue, typeConfig) },
+      haoyi: { value: finalValue, baseValue, timeBonus: timeBonusVal, nicknameBonus: nicknameBonusVal, tierKey: tierByValue(finalValue, typeConfig) },
       tierKey: tierByValue(finalValue, typeConfig),
       label, matched,
       purity,   // {label, desc} 豪意纯度
+      nicknameReason,  // 昵称加成原因（供结果页显示）
     };
   }
 
@@ -245,6 +253,35 @@ const TestEngine = (function () {
    * @param {Array} questions
    * @returns { total, detail, purity }
    */
+  /**
+   * 昵称/联系方式→豪意加成（越爱表现越豪）
+   *   - 昵称带自我标榜词(豪/嘉/帅/酷/王/哥/爷/神/帝/爷)：+4（自我标签化，典型嘉豪）
+   *   - 昵称带自谦词(低调/普通/正常人/无名/路人)：+2（欲擒故纵式表演）
+   *   - 留了联系方式：+3（求关注、渴望被看见=嘉豪本豪）
+   *   - 昵称普通自然：-2（不表现不隐藏=最不嘉豪）
+   *   - 系统默认昵称(嘉豪XXXX号)：不参与(0)
+   */
+  function calcNicknameBonus(nickname, contact) {
+    let bonus = 0;
+    const reasons = [];
+    const name = (nickname || '').trim();
+
+    // 系统默认昵称（嘉豪+数字+号）不参与判定
+    const isDefault = /^嘉豪\d+号$/.test(name);
+    if (!isDefault && name) {
+      const brag = /豪|嘉|帅|酷|王|哥|爷|神|帝|霸|总|尊|圣|皇/;
+      const humble = /低调|普通|正常|无名|路人|小透明|咸鱼|凡人|普通/;
+      if (brag.test(name)) { bonus += 4; reasons.push('昵称带自我标榜字(+4)——这就是嘉豪'); }
+      else if (humble.test(name)) { bonus += 2; reasons.push('昵称欲擒故纵(+2)——装低调也是表演'); }
+      else { bonus -= 2; reasons.push('昵称朴实无华(-2)——既不表现也不隐藏，最不嘉豪'); }
+    }
+    if (contact && contact.trim()) {
+      bonus += 3;
+      reasons.push('敢留联系方式(+3)——求关注、渴望被看见=嘉豪本豪');
+    }
+    return { bonus, reason: reasons.length ? reasons.join('；') : null };
+  }
+
   function calcTimeBonus(timings, questions) {
     const keyQs = questions.filter(q => q.keyQuestion);
     let total = 0;
@@ -279,6 +316,6 @@ const TestEngine = (function () {
     return v;
   }
 
-  return { score, classify, calcHaoyi, tierByValue, resolveLabel, matchCond, evaluate, calcTimeBonus };
+  return { score, classify, calcHaoyi, tierByValue, resolveLabel, matchCond, evaluate, calcTimeBonus, calcNicknameBonus };
 })();
 window.TestEngine = TestEngine;
