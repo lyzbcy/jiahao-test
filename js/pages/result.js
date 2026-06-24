@@ -24,14 +24,14 @@ const ResultPage = (function () {
     }
 
     const D = window.JIAHAO_DATA;
-    const result = window.TestEngine.evaluate(answers, D.questions, D.types, D.labels);
+    const timings = JSON.parse(sessionStorage.getItem('jiahao_timings') || '{}');
+    const result = window.TestEngine.evaluate(answers, D.questions, D.types, D.labels, timings);
     // 缓存结果，供分享/重看用
     sessionStorage.setItem('jiahao_result', JSON.stringify(result));
 
     render(el, result);
     // 上云记录（带用户信息 + 答题耗时，不阻塞）
     const info = JSON.parse(sessionStorage.getItem('jiahao_userinfo') || '{}');
-    const timings = JSON.parse(sessionStorage.getItem('jiahao_timings') || '{}');
     const durationMs = Object.values(timings).reduce((s, v) => s + v, 0);
     window.Repo.saveRecord({
       nickname: info.nickname || '',
@@ -89,6 +89,7 @@ const ResultPage = (function () {
           <p class="copy-trash">💬 ${trash}</p>
           <p class="copy-beat">🏆 你的豪意值击败了全国 <b>${beat}%</b> 的嘉豪</p>
           <p class="copy-rarity">${rarity}</p>
+          ${result.purity ? `<p class="copy-purity">${result.purity.emoji} 豪意纯度：<b>${result.purity.label}</b>（基础豪意值 ${result.haoyi.baseValue} ${result.haoyi.timeBonus >= 0 ? '+' : ''}${result.haoyi.timeBonus} → ${result.haoyi.value}）</p><p class="copy-purity-desc">${result.purity.desc}</p>` : ''}
         </div>
 
         <div class="label-desc">${label.desc}</div>

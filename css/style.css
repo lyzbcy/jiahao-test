@@ -194,6 +194,9 @@ html, body {
 .copy-box p:last-child { margin-bottom: 0; }
 .copy-trash { font-size: 17px !important; }
 .copy-beat b { color: var(--candy-pink); }
+.copy-purity { font-size: 15px; }
+.copy-purity b { color: var(--candy-purple); }
+.copy-purity-desc { font-size: 13px; color: var(--text-soft); font-style: italic; }
 .label-desc {
   background: #fff; border-radius: var(--radius); padding: 20px;
   margin-bottom: 24px; color: var(--text-soft); font-size: 15px;

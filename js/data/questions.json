@@ -63,6 +63,7 @@
     "id": "q6",
     "dim": "QE",
     "scenario": "幻想",
+    "keyQuestion": true,
     "text": "深夜一个人走夜路，你脑子里在想什么？",
     "options": [
       { "key": "A", "text": "明天早饭吃什么", "pole": "Q", "score": 1 },
@@ -147,6 +148,7 @@
     "id": "q13",
     "dim": "ZJ",
     "scenario": "教室",
+    "keyQuestion": true,
     "text": "当你做出某个'嘉豪行为'后，被同学笑了，你的内心是？",
     "options": [
       { "key": "A", "text": "我？我做啥了？（完全没意识到自己刚才很嘉豪）", "pole": "Z", "score": 2 },
@@ -171,6 +173,7 @@
     "id": "q15",
     "dim": "ZJ",
     "scenario": "自拍",
+    "keyQuestion": true,
     "text": "翻到自己以前很'中二'的照片/说说，你会？",
     "options": [
       { "key": "A", "text": "觉得还挺帅，留作纪念", "pole": "Z", "score": 2 },

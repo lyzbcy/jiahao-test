@@ -206,15 +206,79 @@ const TestEngine = (function () {
   }
 
   /** 一站式：answers → 完整结果 */
-  function evaluate(answers, questions, typeConfig, labels) {
+  function evaluate(answers, questions, typeConfig, labels, timings) {
     const dimScores = score(answers, questions);
     const { code, detail } = classify(dimScores, typeConfig);
     const haoyi = calcHaoyi({ code, detail }, typeConfig);
+    // 本命嘉豪/四维代码用基础豪意值判定（不受思考时间影响——性格画像 vs 纯度独立）
     const ctx = { dimScores, code, detail, haoyi, tierKey: haoyi.tierKey };
     const { label, matched } = resolveLabel(ctx, labels, typeConfig);
-    return { dimScores, code, detail, haoyi, tierKey: haoyi.tierKey, label, matched };
+
+    // 思考时间加成（仅关键题 q6/q13/q15）：真豪=快，装豪=慢
+    const baseValue = haoyi.value;
+    let timeBonusVal = 0, purity = null;
+    if (timings) {
+      const tb = calcTimeBonus(timings, questions);
+      timeBonusVal = tb.total;
+      purity = tb.purity;
+    }
+    // 最终豪意值 = 基础值 + 时间加成，clamp 0-100（影响稀有度/排名）
+    const finalValue = Math.max(0, Math.min(100, baseValue + timeBonusVal));
+
+    return {
+      dimScores, code, detail,
+      haoyi: { value: finalValue, baseValue, timeBonus: timeBonusVal, tierKey: tierByValue(finalValue, typeConfig) },
+      tierKey: tierByValue(finalValue, typeConfig),
+      label, matched,
+      purity,   // {label, desc} 豪意纯度
+    };
   }
 
-  return { score, classify, calcHaoyi, tierByValue, resolveLabel, matchCond, evaluate };
+  /**
+   * 思考时间→豪意加成（心理学模型：自动化加工 vs 控制性加工）
+   *   - t<1.2s：盲选/手滑，归零（fast guess）
+   *   - t≈2.5s：本能甜区峰值 +5（系统1自动化提取）
+   *   - 2.5~8s：正加成递减
+   *   - t>8s：进入控制性加工（装），线性扣分
+   *   - t>15s：封顶 -4（极慢可能是认真回忆，不无限惩罚）
+   * @param {Object} timings { qid: ms }
+   * @param {Array} questions
+   * @returns { total, detail, purity }
+   */
+  function calcTimeBonus(timings, questions) {
+    const keyQs = questions.filter(q => q.keyQuestion);
+    let total = 0;
+    const detail = {};
+    keyQs.forEach(q => {
+      const ms = timings[q.id];
+      if (ms == null) return;
+      const t = ms / 1000;          // 转秒
+      const b = _singleBonus(t);
+      detail[q.id] = { t: +t.toFixed(1), bonus: +b.toFixed(1) };
+      total += b;
+    });
+    total = +total.toFixed(1);
+
+    // 纯度判定：按总加成
+    let purity;
+    if (total >= 6) purity = { label: '真豪', desc: '你的嘉豪反应是本能的、不假思索的——身在豪中不知豪，豪意纯粹。', emoji: '🏆' };
+    else if (total >= 2) purity = { label: '偏真豪', desc: '大部分时候你是真豪，偶尔会思考一下——瑕不掩瑜。', emoji: '✨' };
+    else if (total > -2) purity = { label: '亦真亦装', desc: '你在本能和刻意之间反复横跳，是个有演技的嘉豪。', emoji: '🎭' };
+    else if (total > -6) purity = { label: '偏装豪', desc: '答题前你常常权衡"哪个更豪"——有点表演成分了。', emoji: '🎬' };
+    else purity = { label: '装豪', desc: '你在每道关键题前都深思熟虑——豪意是演出来的，但演技不错。', emoji: '🎞️' };
+    return { total, detail, purity };
+  }
+
+  // 单题时间加成
+  function _singleBonus(t) {
+    if (t < 1.2) return 0;                  // 盲选归零
+    if (t > 30) t = 30;                     // 极慢封顶
+    const peak = 2.5, width = 3.0, amp = 5;
+    let v = amp * Math.exp(-((t - peak) * (t - peak)) / (2 * width * width));
+    if (t > 8) { v = v - (t - 8) * 0.6; if (v < -4) v = -4; }
+    return v;
+  }
+
+  return { score, classify, calcHaoyi, tierByValue, resolveLabel, matchCond, evaluate, calcTimeBonus };
 })();
 window.TestEngine = TestEngine;
