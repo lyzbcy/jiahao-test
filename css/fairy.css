@@ -99,3 +99,33 @@
   width: 34px; height: 34px; object-fit: contain; align-self: center;
   margin-right: -4px;
 }
+
+/* ===== 迷你表情包随机掉落 ===== */
+.sticker-rain {
+  position: fixed;
+  top: -70px;                        /* 从屏幕上方开始 */
+  z-index: 5;                        /* 在内容之上、但在弹窗之下（弹窗 z-index 更高） */
+  pointer-events: none;              /* 不阻挡点击 */
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  animation: rainFall var(--rain-duration, 8s) linear forwards;
+  will-change: transform, top;
+}
+@keyframes rainFall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    top: -70px;
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.85;
+  }
+  92% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(var(--rain-drift, 0), 0) rotate(var(--rain-rotate, 0deg));
+    top: 105vh;                      /* 落到屏幕底部之下 */
+    opacity: 0;
+  }
+}

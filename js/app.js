@@ -63,9 +63,11 @@
     try { await window.SupabaseConfig.init(); } catch (e) { /* 静默回退 */ }
     // 3. 初始化表情包索引（失败不阻塞，回退 emoji）
     try { await window.Sticker.init(); } catch (e) { /* 静默回退 */ }
-    // 4. 吉祥物
+    // 4. 表情包随机掉落（失败不阻塞）
+    try { window.StickerRain.init(); } catch (e) { /* 静默 */ }
+    // 5. 吉祥物
     try { window.Mascot.init('#mascot'); } catch (e) { /* 忽略 */ }
-    // 5. 路由
+    // 6. 路由
     window.addEventListener('hashchange', router);
     router();
   }
