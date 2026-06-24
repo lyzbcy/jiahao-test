@@ -12,7 +12,7 @@ const HomePage = (function () {
         <div class="home-hero">
           <div class="home-badge" id="homeCount">载入中…</div>
           <h1 class="home-title">你是哪种嘉豪？</h1>
-          <p class="home-sub">答 16 题，算出你的<span class="hl">豪意值</span>，抽出你的<span class="hl">本命嘉豪</span></p>
+          <p class="home-sub">答 20 题，算出你的<span class="hl">豪意值</span>，抽出你的<span class="hl">本命嘉豪</span></p>
           <div class="home-mascot-emoji">😎</div>
           <button class="btn-primary btn-big" id="startBtn">开始测试 →</button>
           <div class="home-nav">

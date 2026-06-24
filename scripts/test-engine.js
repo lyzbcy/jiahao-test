@@ -31,14 +31,14 @@ function ok(name, cond, extra) {
 }
 
 console.log('\n=== 1. 数据完整性 ===');
-ok('题库 16 题', questions.length === 16, '实际 ' + questions.length);
+ok('题库 20 题', questions.length === 20, '实际 ' + questions.length);
 ok('标签 14 款（12常规+2隐藏）', labels.length === 14, '实际 ' + labels.length);
 ok('维度 4 个', types.dimensions.length === 4, '实际 ' + types.dimensions.length);
 ok('分档 5 档', types.tiers.length === 5, '实际 ' + types.tiers.length);
-// 每维度正好 4 题
+// 每维度正好 5 题
 types.dimensions.forEach(d => {
   const n = questions.filter(q => q.dim === d.id).length;
-  ok('维度 ' + d.id + ' 有 4 题', n === 4, '实际 ' + n);
+  ok('维度 ' + d.id + ' 有 5 题', n === 5, '实际 ' + n);
 });
 
 console.log('\n=== 2. 构造各种答案，验证引擎不崩 + 结果合理 ===');
