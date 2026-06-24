@@ -73,4 +73,26 @@
   } else {
     start();
   }
+
+  // 全局 App 对象：供导航栏 onclick 调用（加群/赞赏弹窗）
+  const App = {
+    openReward() { openModal('reward-modal'); },
+    closeReward() { closeModal('reward-modal'); },
+    openQq() { openModal('qq-modal'); },
+    closeQq() { closeModal('qq-modal'); },
+  };
+  function openModal(id) {
+    const m = document.getElementById(id);
+    if (!m) return;
+    m.classList.remove('hidden', 'fade-out');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    const m = document.getElementById(id);
+    if (!m) return;
+    m.classList.add('fade-out');
+    document.body.style.overflow = '';
+    setTimeout(() => m.classList.add('hidden'), 250);
+  }
+  window.App = App;
 })();

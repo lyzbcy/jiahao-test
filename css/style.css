@@ -290,6 +290,8 @@ html, body {
 .about-tip { background: var(--bg-pink); padding: 12px 16px; border-radius: 12px; border-left: 4px solid var(--candy-pink); }
 .about-quote { text-align: center; font-size: 20px; color: var(--candy-purple); margin: 24px 0 8px; }
 .about-src { text-align: center; font-size: 12px; color: var(--text-soft); }
+.about-author { display: flex; gap: 12px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+.about-author .btn-ghost { padding: 10px 20px; font-size: 14px; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -332,4 +334,63 @@ html, body {
   cursor: pointer; text-decoration: underline; opacity: 0.7;
 }
 .btn-skip:hover { opacity: 1; }
+
+/* ===== 顶部导航栏 ===== */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 720px; margin: 0 auto;
+  padding: 10px 16px; background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(155,107,255,0.12);
+}
+.topbar-brand { font-size: 17px; font-weight: bold; color: var(--candy-purple); }
+.topbar-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+.topbar-nav a {
+  font-size: 14px; color: var(--text-soft); text-decoration: none;
+  padding: 6px 10px; border-radius: 999px; transition: all 0.2s;
+}
+.topbar-nav a:hover { background: var(--bg-pink); color: var(--candy-purple); }
+
+/* ===== 模态框（赞赏/加群）===== */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 9500;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(20,10,35,0.6);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  padding: 20px; transition: opacity 0.25s;
+}
+.modal-overlay.hidden { display: none; }
+.modal-overlay.fade-out { opacity: 0; pointer-events: none; }
+.modal-card {
+  position: relative; background: #fff; border-radius: 24px;
+  padding: 32px 28px 26px; max-width: 340px; width: 100%; text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  animation: modalIn 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.92); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-close {
+  position: absolute; top: 12px; right: 16px;
+  width: 32px; height: 32px; border-radius: 50%;
+  font-size: 22px; line-height: 1; color: var(--text-soft);
+  background: var(--bg-pink); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-close:hover { background: var(--candy-purple); color: #fff; }
+.modal-title {
+  font-size: 20px; font-weight: bold; margin-bottom: 8px;
+  background: linear-gradient(135deg, var(--candy-pink), var(--candy-purple));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.modal-sub { font-size: 13px; color: var(--text-soft); line-height: 1.6; margin-bottom: 18px; }
+.reward-qr {
+  width: 220px; height: 220px; margin: 0 auto; border-radius: 16px;
+  border: 3px solid #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.12); object-fit: cover;
+}
+.modal-tip { margin-top: 14px; font-size: 12px; color: var(--text-soft); }
+.modal-thanks { margin-top: 8px; font-size: 14px; color: var(--candy-purple); }
+
 

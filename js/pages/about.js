@@ -26,6 +26,13 @@ const AboutPage = (function () {
 
           <div class="about-quote">"质疑嘉豪，理解嘉豪，成为嘉豪。"</div>
           <div class="about-src">梗来源：百度百科"嘉豪"词条 · 游民星空《全世界都成为了嘉豪》</div>
+
+          <h2>支持作者 / 加群</h2>
+          <p>这个测试是作者用爱发电做的。如果它让你笑了，欢迎支持一下，也欢迎进群交流嘉豪心得～</p>
+          <div class="about-author">
+            <button class="btn-ghost" onclick="App.openReward()">☕ 请作者喝咖啡</button>
+            <button class="btn-ghost" onclick="App.openQq()">💬 加入 QQ 群</button>
+          </div>
         </div>
         <div class="page-back">
           <a href="#/" class="btn-primary">开始测试 →</a>
