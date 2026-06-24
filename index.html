@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>嘉豪值测试 · 测出你的本命嘉豪</title>
+  <meta name="description" content="你是哪种嘉豪？16 题测出你的豪意值，抽出你的本命嘉豪——自在极意豪、上课全对豪、虚空打碟豪……">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fairy.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap">
+</head>
+<body>
+  <!-- 浮动云彩/星星装饰（fairy.css） -->
+  <div class="sky-deco" aria-hidden="true">
+    <span class="cloud cloud-1">☁️</span>
+    <span class="cloud cloud-2">☁️</span>
+    <span class="star star-1">⭐</span>
+    <span class="star star-2">✨</span>
+    <span class="star star-3">🌟</span>
+  </div>
+
+  <!-- 页面挂载点 -->
+  <main id="app"></main>
+
+  <!-- 吉祥物 -->
+  <div id="mascot" class="mascot state-idle">
+    <div class="mascot-emoji">😎</div>
+    <div class="mascot-bubble"><span class="mascot-line">我就是嘉豪。</span></div>
+  </div>
+
+  <!-- ====== 模块脚本（顺序重要，app.js 最后）====== -->
+  <!-- 配置 + 数据层 -->
+  <script src="js/config/supabase.js"></script>
+  <script src="js/data/repository.js"></script>
+  <!-- 模块 -->
+  <script src="js/modules/labels.js"></script>
+  <script src="js/modules/test-engine.js"></script>
+  <script src="js/modules/trash-talk.js"></script>
+  <script src="js/modules/mascot.js"></script>
+  <script src="js/modules/share-card.js"></script>
+  <!-- 页面 -->
+  <script src="js/pages/home.js"></script>
+  <script src="js/pages/result.js"></script>
+  <script src="js/pages/ranking.js"></script>
+  <script src="js/pages/collection.js"></script>
+  <script src="js/pages/about.js"></script>
+  <!-- 主程序最后 -->
+  <script src="js/app.js"></script>
+</body>
+</html>

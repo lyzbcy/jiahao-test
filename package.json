@@ -1,0 +1,10 @@
+{
+  "name": "jiahao-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "嘉豪值测试 · 测出你的本命嘉豪（MBTI 式趣味测试）",
+  "scripts": {
+    "preview:local": "node local-preview-server.js",
+    "copy-assets": "node scripts/copy-assets.js"
+  }
+}

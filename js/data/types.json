@@ -1,0 +1,43 @@
+{
+  "dimensions": [
+    {
+      "id": "ZZ",
+      "name": "装",
+      "poles": ["P", "Z"],
+      "poleLabels": { "P": "朴实无华", "Z": "极致装杯" },
+      "threshold": 0.5,
+      "desc": "你的表现欲与刻意营造感"
+    },
+    {
+      "id": "QE",
+      "name": "二",
+      "poles": ["Q", "E"],
+      "poleLabels": { "Q": "清醒克制", "E": "中二爆表" },
+      "threshold": 0.5,
+      "desc": "你的中二病浓度与自我沉浸度"
+    },
+    {
+      "id": "LS",
+      "name": "骚",
+      "poles": ["L", "S"],
+      "poleLabels": { "L": "老实本分", "S": "花式整活" },
+      "threshold": 0.5,
+      "desc": "你的整活能力与行为花样"
+    },
+    {
+      "id": "ZJ",
+      "name": "觉",
+      "poles": ["Z", "J"],
+      "poleLabels": { "Z": "身在豪中", "J": "浑然自觉" },
+      "threshold": 0.5,
+      "desc": "你对自己嘉豪行为的自觉程度"
+    }
+  ],
+  "tiers": [
+    { "id": "n",   "name": "普通",   "min": 0,   "max": 30,  "stars": "⭐⭐",       "color": "#9CA3AF", "order": 5 },
+    { "id": "r",   "name": "稀有",   "min": 31,  "max": 55,  "stars": "⭐⭐⭐",     "color": "#60A5FA", "order": 4 },
+    { "id": "sr",  "name": "超稀有", "min": 56,  "max": 75,  "stars": "⭐⭐⭐⭐",   "color": "#C084FC", "order": 3 },
+    { "id": "ssr", "name": "传说",   "min": 76,  "max": 95,  "stars": "⭐⭐⭐⭐⭐", "color": "#FFB400", "order": 2 },
+    { "id": "ur",  "name": "隐藏",   "min": 96,  "max": 100, "stars": "🌈",         "color": "#EC4899", "order": 0 }
+  ]
+}

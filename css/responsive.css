@@ -1,0 +1,55 @@
+/* responsive.css — 移动端适配 */
+@media (max-width: 600px) {
+  #app { padding: 16px 14px 140px; }
+
+  /* 首页 */
+  .home-title { font-size: 34px; }
+  .home-sub { font-size: 16px; }
+  .home-mascot-emoji { font-size: 76px; }
+  .btn-big { font-size: 19px; padding: 16px 36px; }
+  .home-nav .btn-ghost { padding: 8px 14px; font-size: 14px; }
+
+  /* 做题 */
+  .quiz-text { font-size: 21px; }
+  .quiz-opt { padding: 16px 14px; font-size: 15px; }
+  .quiz-opt-key { width: 28px; height: 28px; font-size: 14px; }
+
+  /* 结果 */
+  .label-name { font-size: 30px; }
+  .label-emoji { font-size: 76px; }
+  .haoyi-value { font-size: 64px; }
+  .label-card { padding: 24px 16px; }
+
+  /* 排行榜 */
+  .rank-row { padding: 12px 14px; gap: 10px; }
+  .rank-medal { font-size: 24px; width: 32px; }
+  .rank-name { font-size: 15px; }
+  .rank-haoyi { font-size: 24px; }
+
+  /* 图鉴 */
+  .collection-grid { grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 10px; }
+  .cell { padding: 10px 6px; }
+  .cell-img { width: 52px; height: 52px; font-size: 28px; }
+  .cell-name { font-size: 13px; }
+
+  /* 吉祥物在小屏缩小并下移，避免遮挡内容 */
+  .mascot { right: 12px; bottom: 12px; }
+  .mascot-emoji { font-size: 40px; }
+  .mascot-bubble { max-width: 140px; font-size: 12px; }
+
+  .page-title { font-size: 26px; }
+  .about-body { padding: 18px; }
+  .about-body h2 { font-size: 18px; }
+}
+
+/* 超小屏（SE 等） */
+@media (max-width: 360px) {
+  .home-title { font-size: 28px; }
+  .quiz-text { font-size: 19px; }
+  .collection-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 横屏时吉祥物往上靠，别挡操作区 */
+@media (max-height: 500px) and (orientation: landscape) {
+  .mascot { bottom: auto; top: 12px; right: 12px; }
+}
