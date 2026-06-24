@@ -50,7 +50,7 @@ const ResultPage = (function () {
       labelId: result.label.id,
       durationMs: durationMs,
       questionTimings: timings,
-    }).catch(() => {});
+    }).catch(e => console.error('[嘉豪] 上云失败:', e));
 
     if (window.Mascot) {
       window.Mascot.setState(result.tierKey === 'n' ? 'cry' : 'happy');
